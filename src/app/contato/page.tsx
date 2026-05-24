@@ -42,11 +42,17 @@ export default function ContatoPage() {
                   </a>
                 </div>
                 <div>
-                  <p className="label-caps text-brand-700 mb-2">Localização</p>
-                  <p className="font-body font-light text-base text-brand-700 leading-relaxed">
-                    Belo Horizonte, MG<br />
-                    Atendemos toda a região metropolitana
-                  </p>
+                  <p className="label-caps text-brand-700 mb-2">Endereço</p>
+                  <a
+                    href="https://maps.google.com/?q=Rua+David+Maurilio+Mourão,+113,+Palmeiras,+Belo+Horizonte+MG+30575-340"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-body font-light text-base text-brand-700 leading-relaxed hover:text-gold-main transition-colors block"
+                  >
+                    Rua David Maurílio Mourão, 113<br />
+                    Palmeiras — Belo Horizonte, MG<br />
+                    CEP 30575-340
+                  </a>
                 </div>
                 <div>
                   <p className="label-caps text-brand-700 mb-2">Horário de atendimento</p>

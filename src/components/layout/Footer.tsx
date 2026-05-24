@@ -63,7 +63,11 @@ export function Footer() {
                 {instagram}
               </a>
             </li>
-            <li className="text-brand-500 pt-1">Belo Horizonte, MG</li>
+            <li className="text-brand-500 pt-1 leading-relaxed">
+              Rua David Maurílio Mourão, 113<br />
+              Palmeiras — Belo Horizonte, MG<br />
+              CEP 30575-340
+            </li>
           </ul>
         </div>
       </div>
