@@ -111,8 +111,20 @@ export default function Home() {
     <>
       {/* ── HERO ──────────────────────────────────────────────────── */}
       <section className="relative min-h-screen bg-brand-900 flex items-center justify-center overflow-hidden pt-16">
-        {/* Subtle texture overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-950/60 via-transparent to-brand-950/40 pointer-events-none" />
+        {/* Imagem de fundo */}
+        <Image
+          src="/images/ambientes-planejados-prime-line-belo-horizonte.webp"
+          alt="Cozinha planejada de alto padrão com iluminação LED — Prime Line Ambientes Planejados Belo Horizonte"
+          fill
+          priority
+          quality={90}
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        {/* Overlay escuro para legibilidade do texto */}
+        <div className="absolute inset-0 bg-brand-950/75 pointer-events-none" />
+        {/* Gradiente sutil no topo e rodapé */}
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-950/40 via-transparent to-brand-950/60 pointer-events-none" />
 
         <div className="relative z-10 container-xl section-pad text-center">
           <p className="label-caps text-gold-500 mb-6 tracking-caps">

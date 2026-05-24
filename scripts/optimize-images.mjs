@@ -29,6 +29,7 @@ const SLUG_MAP = {
   'home-office':  'home-office-planejado-belo-horizonte',
   'closet':       'closet-planejado-belo-horizonte',
   // Hero / banner
+  'hero-bg':      'ambientes-planejados-prime-line-belo-horizonte',
   'hero':         'ambientes-planejados-prime-line-belo-horizonte',
   // Genérico: se não estiver no mapa, usa o nome original
 }
