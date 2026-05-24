@@ -7,8 +7,8 @@ export function Hero() {
     <section className="relative min-h-screen bg-brand-900 flex items-center justify-center overflow-hidden pt-16">
       {/* Background image (hero-bg.webp quando disponível) */}
       <Image
-        src="/images/ambientes-planejados-prime-line-belo-horizonte.webp"
-        alt="Ambientes planejados de alto padrão — Prime Line Belo Horizonte"
+        src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1920&q=85"
+        alt="Cozinha planejada de alto padrão com iluminação LED — Prime Line Ambientes Planejados Belo Horizonte"
         fill priority quality={90}
         className="object-cover object-center"
         sizes="100vw"
