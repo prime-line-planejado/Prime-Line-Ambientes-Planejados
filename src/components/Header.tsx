@@ -12,7 +12,7 @@ const navLinks = [
 ]
 
 const whatsapp = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '5531998156666'
-const whatsappUrl = `https://wa.me/${whatsapp}?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento.`
+const whatsappUrl = `https://wa.me/5531998156666?text=Ol%C3%A1!%20Vi%20o%20trabalho%20de%20voc%C3%AAs%20%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.%20Pode%20me%20contar%20como%20funciona%20o%20processo%3F`
 
 export function Header() {
   const [open, setOpen] = useState(false)
@@ -23,7 +23,7 @@ export function Header() {
 
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">
-          <Image src="/logo.svg" alt="Prime Line Ambientes Planejados" width={160} height={43} priority />
+          <Image src="/logo.svg" alt="Prime Line Ambientes Planejados" width={200} height={45} priority />
         </Link>
 
         {/* Desktop nav */}
