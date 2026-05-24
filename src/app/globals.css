@@ -1,60 +1,141 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
-  }
+  html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: var(--font-body, 'Montserrat', system-ui, sans-serif);
     background-color: #faf8f5;
-    color: #1a1510;
+    color: #3a2f24;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   ::selection {
-    background-color: #c4a96e;
-    color: #1a1510;
+    background: #c4a96e;
+    color: #1e1711;
   }
 }
 
 @layer components {
-  .btn-solid {
-    @apply inline-flex items-center justify-center
-           bg-gold-500 text-brand-900
-           font-sans font-semibold text-xs tracking-caps uppercase
-           px-8 py-4
-           transition-colors duration-200
-           hover:bg-gold-400;
-  }
 
-  .btn-outline {
-    @apply inline-flex items-center justify-center
-           border border-gold-500 text-gold-400
-           font-sans font-semibold text-xs tracking-caps uppercase
-           px-8 py-4
-           transition-colors duration-200
-           hover:bg-gold-500 hover:text-brand-900;
-  }
-
+  /* ── Texto ──────────────────────────────────────────────────── */
   .label-caps {
-    @apply font-sans text-xs font-semibold tracking-caps uppercase;
+    @apply font-body text-xs font-semibold tracking-widest2 uppercase text-brand-500;
   }
 
-  .heading-serif {
-    @apply font-serif font-light leading-tight;
+  .subtitle {
+    @apply font-display italic text-lg text-gold-main;
   }
 
-  .section-pad {
-    @apply py-20 md:py-28 px-6;
+  /* ── Linha decorativa dourada ───────────────────────────────── */
+  .gold-line {
+    @apply block w-12 h-px bg-gold-main mt-4;
+  }
+  .gold-line--center {
+    @apply mx-auto;
   }
 
-  .container-xl {
+  /* ── Botões ─────────────────────────────────────────────────── */
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2
+           border border-brand-500 text-brand-500
+           font-body font-semibold text-xs tracking-caps uppercase
+           px-8 py-4
+           transition-colors duration-200
+           hover:bg-brand-500 hover:text-brand-50;
+  }
+
+  .btn-solid {
+    @apply inline-flex items-center justify-center gap-2
+           bg-brand-800 text-brand-50
+           font-body font-semibold text-xs tracking-caps uppercase
+           px-8 py-4
+           transition-colors duration-200
+           hover:bg-brand-900;
+  }
+
+  /* ── Seções ─────────────────────────────────────────────────── */
+  .section {
+    @apply py-24 md:py-32 px-6;
+  }
+
+  .section--dark {
+    @apply bg-brand-900 text-brand-100;
+  }
+
+  .section--cream {
+    @apply bg-brand-100;
+  }
+
+  /* ── Layout ─────────────────────────────────────────────────── */
+  .container {
     @apply max-w-7xl mx-auto;
   }
+
+  /* ── Cards de projeto ───────────────────────────────────────── */
+  .project-card {
+    @apply relative overflow-hidden aspect-[4/3] bg-brand-200 cursor-pointer;
+  }
+
+  /* ── Blog typography ────────────────────────────────────────── */
+  .prose-prime {
+    @apply font-body font-light text-base text-brand-800 leading-relaxed max-w-none;
+  }
+  .prose-prime h2 {
+    @apply font-display font-light text-3xl text-brand-900 mt-12 mb-2;
+  }
+  .prose-prime h3 {
+    @apply font-display font-light text-2xl text-brand-900 mt-8 mb-2;
+  }
+  .prose-prime p     { @apply mb-5; }
+  .prose-prime strong { @apply font-semibold text-brand-900; }
+  .prose-prime ul    { @apply list-disc pl-6 mb-5 space-y-2; }
+  .prose-prime ol    { @apply list-decimal pl-6 mb-5 space-y-2; }
+  .prose-prime li    { @apply text-brand-700; }
+  .prose-prime blockquote {
+    @apply border-l-2 border-gold-main pl-6 italic text-brand-500 my-8;
+  }
+  .prose-prime a {
+    @apply text-brand-500 hover:text-gold-main underline underline-offset-2;
+  }
+  .prose-prime hr {
+    @apply border-brand-200 my-10;
+  }
+
+  /* ── WhatsApp FAB ───────────────────────────────────────────── */
+  .whatsapp-fab {
+    @apply fixed bottom-6 right-6 z-50
+           flex items-center justify-center
+           w-14 h-14 rounded-full
+           bg-[#25D366] text-white
+           shadow-lg shadow-black/25
+           transition-transform duration-200 hover:scale-110;
+  }
+
+  /* ── Animações ──────────────────────────────────────────────── */
+  .animate-fade-up {
+    animation: fadeUp 0.65s cubic-bezier(.22,1,.36,1) forwards;
+    opacity: 0;
+  }
+  .animate-delay-1 { animation-delay: 0.1s; }
+  .animate-delay-2 { animation-delay: 0.2s; }
+  .animate-delay-3 { animation-delay: 0.35s; }
+  .animate-delay-4 { animation-delay: 0.5s; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Ping WhatsApp ──────────────────────────────────────────────── */
+@keyframes wa-ping {
+  0%   { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+.wa-ping {
+  animation: wa-ping 1.8s ease-out infinite;
 }
