@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { Badge } from '@/components/ui/Badge'
 import { formatarData } from '@/lib/utils'
 
@@ -27,11 +28,14 @@ export function HeaderArtigo({ title, description, categoria, date, tempoLeitura
           {description}
         </p>
         {imagem && (
-          <div className="aspect-[16/7] overflow-hidden -mx-6 md:mx-0 md:rounded-none">
-            <img
+          <div className="relative aspect-[16/7] overflow-hidden -mx-6 md:mx-0 md:rounded-none">
+            <Image
               src={imagem}
               alt={title}
-              className="w-full h-full object-cover"
+              fill
+              priority
+              sizes="(max-width:768px) 100vw, 896px"
+              className="object-cover"
             />
           </div>
         )}

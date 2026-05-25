@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Badge } from '@/components/ui/Badge'
 import { formatarData } from '@/lib/utils'
 import type { Artigo } from '@/types'
@@ -10,12 +11,14 @@ interface Props {
 export function CardArtigo({ artigo }: Props) {
   return (
     <Link href={`/blog/${artigo.slug}`} className="group flex flex-col gap-4">
-      <div className="aspect-[16/9] bg-brand-200 overflow-hidden">
+      <div className="relative aspect-[16/9] bg-brand-200 overflow-hidden">
         {artigo.imagem && (
-          <img
+          <Image
             src={artigo.imagem}
             alt={artigo.title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            fill
+            sizes="(max-width:768px) 100vw, (max-width:1024px) 50vw, 33vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         )}
       </div>
