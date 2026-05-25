@@ -5,6 +5,7 @@ import { CtaContato } from '@/components/home/CtaContato'
 export const metadata: Metadata = {
   title: 'Sobre Nós',
   description: 'Conheça a Prime Line Ambientes Planejados — marcenaria de alto padrão em Belo Horizonte com foco em exclusividade, qualidade e atendimento personalizado.',
+  alternates: { canonical: '/sobre' },
 }
 
 const valores = [

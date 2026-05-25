@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { getTodosArtigos } from '@/lib/blog'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 import { Badge } from '@/components/ui/Badge'
@@ -19,12 +20,14 @@ export function BlogPreview() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {artigos.map((artigo: any) => (
             <Link key={artigo.slug} href={`/blog/${artigo.slug}`} className="group flex flex-col gap-4">
-              <div className="aspect-[16/9] bg-brand-200 overflow-hidden">
+              <div className="relative aspect-[16/9] bg-brand-200 overflow-hidden">
                 {artigo.imagem && (
-                  <img
+                  <Image
                     src={artigo.imagem}
                     alt={artigo.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    fill
+                    sizes="(max-width:768px) 100vw, 33vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 )}
               </div>

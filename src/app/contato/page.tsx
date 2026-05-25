@@ -6,6 +6,7 @@ const WA_URL = 'https://wa.me/5531998156666?text=Ol%C3%A1!%20Vi%20o%20trabalho%2
 export const metadata: Metadata = {
   title: 'Contato',
   description: 'Entre em contato com a Prime Line Ambientes Planejados. Agende uma visita técnica gratuita e receba um projeto personalizado em Belo Horizonte.',
+  alternates: { canonical: '/contato' },
 }
 
 export default function ContatoPage() {

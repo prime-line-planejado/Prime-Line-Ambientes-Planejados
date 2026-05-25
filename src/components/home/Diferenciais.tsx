@@ -54,7 +54,7 @@ export function Diferenciais() {
             >
               <span className="text-gold-main">{icon}</span>
               <div>
-                <p className="label-caps text-brand-900 mb-3">{titulo}</p>
+                <h3 className="label-caps text-brand-900 mb-3">{titulo}</h3>
                 <p className="font-body font-light text-sm text-brand-600 leading-relaxed">{descricao}</p>
               </div>
             </div>

@@ -6,6 +6,7 @@ import { CtaContato } from '@/components/home/CtaContato'
 export const metadata: Metadata = {
   title: 'Portfólio',
   description: 'Conheça nossos projetos de móveis planejados residenciais e corporativos em Belo Horizonte. Cozinhas, closets, escritórios e muito mais.',
+  alternates: { canonical: '/portfolio' },
 }
 
 export default function PortfolioPage() {

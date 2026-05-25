@@ -31,11 +31,26 @@ export const metadata: Metadata = {
     'Projetos exclusivos em marcenaria planejada de alto padrão. Cozinhas, quartos, closets, escritórios e salas sob medida em Belo Horizonte. Orçamento gratuito.',
   metadataBase: new URL(siteUrl),
   openGraph: {
-    title: 'Prime Line Ambientes Planejados',
-    description: 'Projetos exclusivos em marcenaria planejada de alto padrão em Belo Horizonte.',
+    title: 'Prime Line Ambientes Planejados | Móveis Planejados em Belo Horizonte',
+    description: 'Projetos exclusivos em marcenaria planejada de alto padrão em Belo Horizonte. Cozinhas, closets, quartos e escritórios sob medida. Orçamento gratuito.',
     type: 'website',
+    url: siteUrl,
     locale: 'pt_BR',
     siteName: 'Prime Line Ambientes Planejados',
+    images: [
+      {
+        url: `${siteUrl}/images/raw/hero-bg.jpg`,
+        width: 1200,
+        height: 630,
+        alt: 'Prime Line Ambientes Planejados — Móveis Planejados de Alto Padrão em Belo Horizonte',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Prime Line Ambientes Planejados | Móveis Planejados em BH',
+    description: 'Marcenaria planejada de alto padrão em Belo Horizonte. Cozinhas, closets e ambientes sob medida.',
+    images: [`${siteUrl}/images/raw/hero-bg.jpg`],
   },
   robots: { index: true, follow: true },
 }

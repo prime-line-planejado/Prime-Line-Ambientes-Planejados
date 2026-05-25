@@ -23,8 +23,8 @@ export function Hero() {
         </p>
 
         <h1 className="font-display font-light text-5xl md:text-7xl text-brand-50 leading-tight mb-8 max-w-4xl mx-auto animate-fade-up animate-delay-1">
-          Espaços que revelam{' '}
-          <em className="text-gold-light not-italic">a essência de você</em>
+          Móveis Planejados em Belo Horizonte{' '}
+          <em className="text-gold-light not-italic">que revelam quem você é</em>
         </h1>
 
         <p className="font-body font-light text-lg text-brand-300 max-w-xl mx-auto mb-12 leading-relaxed animate-fade-up animate-delay-2">

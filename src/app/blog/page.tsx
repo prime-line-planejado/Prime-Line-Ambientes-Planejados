@@ -7,6 +7,7 @@ import type { Artigo } from '@/types'
 export const metadata: Metadata = {
   title: 'Blog',
   description: 'Dicas, tendências e inspirações sobre móveis planejados, marcenaria de alto padrão e design de interiores em Belo Horizonte.',
+  alternates: { canonical: '/blog' },
 }
 
 export default function BlogPage() {

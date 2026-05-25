@@ -6,6 +6,7 @@ import { servicosResidenciais, servicosCorporativos, etapasProcesso } from '@/da
 export const metadata: Metadata = {
   title: 'Serviços',
   description: 'Conheça todos os serviços da Prime Line: cozinhas, closets, quartos, salas, home offices e ambientes corporativos sob medida em Belo Horizonte.',
+  alternates: { canonical: '/servicos' },
 }
 
 export default function ServicosPage() {

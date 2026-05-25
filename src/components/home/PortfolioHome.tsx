@@ -18,7 +18,7 @@ export function PortfolioHome() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {destaques.map(projeto => (
-            <div key={projeto.id} className="project-card group">
+            <Link key={projeto.id} href="/portfolio" className="project-card group">
               <Image
                 src={projeto.imagem}
                 alt={`${projeto.titulo} — Prime Line Planejados`}
@@ -29,10 +29,10 @@ export function PortfolioHome() {
               <div className="absolute inset-0 bg-brand-900/0 group-hover:bg-brand-900/60 transition-colors duration-300" />
               <div className="absolute bottom-0 inset-x-0 p-5 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                 <p className="label-caps text-gold-light mb-1">{projeto.categoria}</p>
-                <p className="font-display font-light text-xl text-brand-50">{projeto.titulo}</p>
+                <h3 className="font-display font-light text-xl text-brand-50">{projeto.titulo}</h3>
                 {projeto.local && <p className="font-body text-xs text-brand-300 mt-1">{projeto.local}</p>}
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
