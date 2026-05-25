@@ -5,6 +5,10 @@ import { HeaderArtigo } from '@/components/blog/HeaderArtigo'
 import { ConteudoMDX } from '@/components/blog/ConteudoMDX'
 import { CtaBlogWhatsApp } from '@/components/blog/CtaBlogWhatsApp'
 import { ArtigosRelacionados } from '@/components/blog/ArtigosRelacionados'
+import { CompartilharArtigo } from '@/components/blog/CompartilharArtigo'
+import { TocArtigo } from '@/components/blog/TocArtigo'
+import { AutorArtigo } from '@/components/blog/AutorArtigo'
+import { extractHeadings } from '@/lib/utils'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://primelineplanejados.com.br'
 
@@ -32,6 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: 'article',
       url: `${siteUrl}/blog/${slug}`,
       publishedTime: artigo.date,
+      modifiedTime: artigo.updatedAt ?? artigo.date,
       section: artigo.categoria,
       tags: artigo.tags ?? [],
       locale: 'pt_BR',
@@ -47,12 +52,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
+function contarPalavras(mdx: string): number {
+  return mdx
+    .replace(/```[\s\S]*?```/g, '')   // remove blocos de código
+    .replace(/`[^`]+`/g, '')           // remove código inline
+    .replace(/!\[.*?\]\(.*?\)/g, '')   // remove imagens
+    .replace(/\[.*?\]\(.*?\)/g, '')    // remove links
+    .replace(/#{1,6}\s/g, '')          // remove headings
+    .replace(/[*_~>|]/g, '')           // remove markdown symbols
+    .replace(/\s+/g, ' ')
+    .trim()
+    .split(' ')
+    .filter(Boolean).length
+}
+
 export default async function BlogArtigoPage({ params }: Props) {
   const { slug } = await params
   const artigo = getArtigoPorSlug(slug) as any
   if (!artigo) notFound()
 
   const relacionados = getArtigosRelacionados(artigo.slug, artigo.categoria, 3) as any[]
+  const wordCount = contarPalavras(artigo.content ?? '')
+  const headings = extractHeadings(artigo.content ?? '')
 
   const blogPostingJsonLd = {
     '@context': 'https://schema.org',
@@ -60,7 +81,7 @@ export default async function BlogArtigoPage({ params }: Props) {
     headline: artigo.title,
     description: artigo.description,
     datePublished: artigo.date,
-    dateModified: artigo.date,
+    dateModified: artigo.updatedAt ?? artigo.date,
     author: {
       '@type': 'Organization',
       name: artigo.autor ?? 'Prime Line Ambientes Planejados',
@@ -79,6 +100,7 @@ export default async function BlogArtigoPage({ params }: Props) {
       '@type': 'WebPage',
       '@id': `${siteUrl}/blog/${slug}`,
     },
+    wordCount,
     ...(artigo.imagem ? { image: { '@type': 'ImageObject', url: artigo.imagem, width: 1200, height: 630 } } : {}),
     ...(artigo.tags?.length ? { keywords: artigo.tags.join(', ') } : {}),
   }
@@ -108,8 +130,11 @@ export default async function BlogArtigoPage({ params }: Props) {
 
       <article className="section bg-brand-50">
         <div className="container max-w-3xl mx-auto">
+          <TocArtigo headings={headings} />
           <CtaBlogWhatsApp variant="mid" />
           <ConteudoMDX source={artigo.content} />
+          <AutorArtigo autor={artigo.autor} />
+          <CompartilharArtigo title={artigo.title} />
         </div>
       </article>
 

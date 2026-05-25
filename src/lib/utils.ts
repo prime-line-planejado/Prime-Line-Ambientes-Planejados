@@ -16,3 +16,20 @@ export function slugify(texto: string): string {
     .replace(/-+/g, '-')
     .trim()
 }
+
+export interface Heading {
+  level: number
+  text: string
+  id: string
+}
+
+export function extractHeadings(content: string): Heading[] {
+  const regex = /^(#{2,3})\s+(.+)$/gm
+  const headings: Heading[] = []
+  let match
+  while ((match = regex.exec(content)) !== null) {
+    const text = match[2].replace(/\*\*/g, '').replace(/\*/g, '').trim()
+    headings.push({ level: match[1].length, text, id: slugify(text) })
+  }
+  return headings
+}
