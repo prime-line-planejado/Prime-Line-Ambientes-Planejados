@@ -21,7 +21,7 @@ export function PortfolioHome() {
             <Link key={projeto.id} href="/portfolio" className="project-card group">
               <Image
                 src={projeto.imagem}
-                alt={`${projeto.titulo} — Prime Line Planejados`}
+                alt={projeto.altText}
                 fill
                 sizes="(max-width:640px) 100vw,(max-width:1024px) 50vw,33vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"

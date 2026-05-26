@@ -8,6 +8,7 @@ export interface Projeto {
   descricao: string
   categoria: Exclude<Categoria, 'Todos'>
   imagem: string
+  altText: string
   local?: string
   ano?: number
   destaque?: boolean

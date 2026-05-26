@@ -11,6 +11,13 @@ const categorias: Array<{ label: string; value: Categoria | 'Todos' }> = [
   { label: 'Corporativo', value: 'Corporativo' },
 ]
 
+function waUrl(titulo: string, local?: string) {
+  const texto = encodeURIComponent(
+    `Olá! Vi o projeto "${titulo}"${local ? ` (${local})` : ''} no portfólio de vocês e gostaria de saber mais. Podem me contar como funciona?`
+  )
+  return `https://wa.me/5531998156666?text=${texto}`
+}
+
 export function FiltroPortfolio() {
   const [ativo, setAtivo] = useState<Categoria | 'Todos'>('Todos')
 
@@ -38,10 +45,17 @@ export function FiltroPortfolio() {
       {/* Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {filtrados.map(projeto => (
-          <div key={projeto.id} className="project-card group">
+          <a
+            key={projeto.id}
+            href={waUrl(projeto.titulo, projeto.local)}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Ver detalhes do projeto: ${projeto.titulo}`}
+            className="project-card group"
+          >
             <Image
               src={projeto.imagem}
-              alt={`${projeto.titulo} — Prime Line Planejados`}
+              alt={projeto.altText}
               fill
               sizes="(max-width:640px) 100vw,(max-width:1024px) 50vw,33vw"
               className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -49,11 +63,11 @@ export function FiltroPortfolio() {
             <div className="absolute inset-0 bg-brand-900/0 group-hover:bg-brand-900/60 transition-colors duration-300" />
             <div className="absolute bottom-0 inset-x-0 p-5 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
               <p className="label-caps text-gold-light mb-1">{projeto.categoria}</p>
-              <p className="font-display font-light text-xl text-brand-50">{projeto.titulo}</p>
+              <h3 className="font-display font-light text-xl text-brand-50">{projeto.titulo}</h3>
               {projeto.local && <p className="font-body text-xs text-brand-300 mt-1">{projeto.local}</p>}
               {projeto.ano && <p className="font-body text-xs text-brand-400 mt-0.5">{projeto.ano}</p>}
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>
