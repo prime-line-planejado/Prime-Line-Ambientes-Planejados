@@ -100,25 +100,67 @@ const jsonLd = {
   name: 'Prime Line Ambientes Planejados',
   description:
     'Projetos exclusivos em marcenaria planejada de alto padrão. Cozinhas, quartos, closets, escritórios e salas sob medida em Belo Horizonte.',
-  url: 'https://primelineplanejados.com.br',
+  url: siteUrl,
   telephone: '+5531998156666',
-  image: 'https://primelineplanejados.com.br/logo.svg',
-  priceRange: '$$$$',
+  email: 'contato@primelineplanejados.com.br',
+  image: `${siteUrl}/images/raw/hero-bg.jpg`,
+  logo: `${siteUrl}/logo.svg`,
+  priceRange: '$$$',
+  currenciesAccepted: 'BRL',
+  paymentAccepted: 'Cash, Credit Card, Bank Transfer',
+  foundingDate: '2014',
   address: {
     '@type': 'PostalAddress',
+    streetAddress: 'Rua David Maurílio Mourão, 113',
     addressLocality: 'Belo Horizonte',
     addressRegion: 'MG',
+    postalCode: '30575-340',
     addressCountry: 'BR',
+    addressNeighborhood: 'Palmeiras',
   },
   geo: {
     '@type': 'GeoCoordinates',
     latitude: -19.9167,
     longitude: -43.9345,
   },
-  areaServed: {
-    '@type': 'City',
-    name: 'Belo Horizonte',
-  },
+  hasMap: 'https://maps.google.com/?q=Rua+David+Maurilio+Mourão,+113,+Palmeiras,+Belo+Horizonte+MG+30575-340',
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '08:00',
+      closes: '18:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Saturday'],
+      opens: '09:00',
+      closes: '13:00',
+    },
+  ],
+  areaServed: [
+    { '@type': 'City', name: 'Belo Horizonte' },
+    { '@type': 'City', name: 'Contagem' },
+    { '@type': 'City', name: 'Nova Lima' },
+    { '@type': 'City', name: 'Betim' },
+  ],
+  knowsAbout: [
+    'Marcenaria planejada',
+    'Móveis sob medida',
+    'Cozinhas planejadas',
+    'Closets planejados',
+    'Dormitórios planejados',
+    'Home office planejado',
+    'Ambientes corporativos',
+    'Design de interiores',
+  ],
+  makesOffer: [
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Cozinha Planejada em Belo Horizonte' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Closet Planejado em Belo Horizonte' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Dormitório Planejado em Belo Horizonte' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Home Office Planejado em Belo Horizonte' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Escritório Corporativo Planejado em Belo Horizonte' } },
+  ],
   aggregateRating: {
     '@type': 'AggregateRating',
     ratingValue: '5',
@@ -154,6 +196,21 @@ const jsonLd = {
   ],
 }
 
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Prime Line Ambientes Planejados',
+  url: siteUrl,
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${siteUrl}/blog?q={search_term_string}`,
+    },
+    'query-input': 'required name=search_term_string',
+  },
+}
+
 export default function Home() {
   return (
     <>
@@ -164,6 +221,10 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
       />
       <Hero />
       <Diferenciais />
