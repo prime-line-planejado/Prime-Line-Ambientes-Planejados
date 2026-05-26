@@ -10,10 +10,10 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        serif:   ['Cormorant Garamond', 'Georgia', 'serif'],
-        sans:    ['Montserrat', 'system-ui', 'sans-serif'],
-        display: ['Cormorant Garamond', 'Georgia', 'serif'],
-        body:    ['Montserrat', 'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'Georgia', 'serif'],
+        body:    ['var(--font-body)',    'system-ui', 'sans-serif'],
+        serif:   ['var(--font-display)', 'Georgia', 'serif'],
+        sans:    ['var(--font-body)',    'system-ui', 'sans-serif'],
       },
       colors: {
         brand: {
@@ -25,41 +25,33 @@ const config: Config = {
           500: '#8c7355',
           600: '#7a6047',
           700: '#63503b',
-          800: '#2e2318',
-          900: '#1a1510',
-          950: '#0d0a07',
+          800: '#4e3f30',
+          900: '#3a2f24',
+          950: '#1e1711',
         },
         gold: {
-          300: '#d4bc5a',
-          400: '#c4a83a',
-          500: '#b09030',
-          600: '#8c7220',
-          700: '#6a5010',
+          light: '#c4a96e',
+          main:  '#a8905a',
+          dark:  '#8c7355',
         },
       },
       letterSpacing: {
-        caps:     '0.15em',
-        widest2:  '0.2em',
-        widest3:  '0.3em',
+        caps:    '0.15em',
+        widest2: '0.2em',
+        widest3: '0.3em',
       },
       typography: {
         DEFAULT: {
           css: {
-            fontFamily: 'Montserrat, system-ui, sans-serif',
-            fontWeight: '300',
+            fontFamily: 'var(--font-body), system-ui, sans-serif',
             color: '#4e3f30',
-            'h1, h2, h3, h4': {
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontWeight: '600',
-              color: '#1a1510',
+            'h1,h2,h3,h4': {
+              fontFamily: 'var(--font-display), Georgia, serif',
+              color: '#3a2f24',
             },
-            a: { color: '#a8905a' },
-            strong: { fontWeight: '500', color: '#1a1510' },
-            blockquote: {
-              borderLeftColor: '#c4a96e',
-              fontStyle: 'italic',
-              color: '#63503b',
-            },
+            a:          { color: '#8c7355' },
+            strong:     { color: '#3a2f24' },
+            blockquote: { borderLeftColor: '#a8905a', color: '#7a6047' },
           },
         },
       },
