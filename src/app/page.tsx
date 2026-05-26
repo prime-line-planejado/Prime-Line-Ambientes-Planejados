@@ -7,8 +7,36 @@ import { BlogPreview } from '@/components/home/BlogPreview'
 import { FAQ } from '@/components/home/FAQ'
 import { CtaContato } from '@/components/home/CtaContato'
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://primelineplanejados.com.br'
+
 export const metadata: Metadata = {
+  title: 'Móveis Planejados em Belo Horizonte | Prime Line Ambientes Planejados',
+  description:
+    'Cozinhas, closets, dormitórios e ambientes corporativos planejados sob medida em Belo Horizonte. Visita técnica gratuita, projeto 3D e orçamento sem compromisso. Ligue: (31) 9 9815-6666.',
   alternates: { canonical: '/' },
+  openGraph: {
+    title: 'Móveis Planejados em Belo Horizonte | Prime Line — Visita Gratuita',
+    description:
+      'Cozinhas, closets e ambientes sob medida de alto padrão em BH. Visita técnica gratuita, projeto 3D personalizado e garantia formal. Solicite seu orçamento.',
+    type: 'website',
+    url: siteUrl,
+    locale: 'pt_BR',
+    siteName: 'Prime Line Ambientes Planejados',
+    images: [
+      {
+        url: `${siteUrl}/images/raw/hero-bg.jpg`,
+        width: 1200,
+        height: 630,
+        alt: 'Prime Line Ambientes Planejados — Móveis Planejados de Alto Padrão em Belo Horizonte',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Móveis Planejados em BH | Prime Line — Visita Gratuita',
+    description: 'Cozinhas, closets e ambientes sob medida em Belo Horizonte. Projeto 3D, garantia formal e visita técnica gratuita.',
+    images: [`${siteUrl}/images/raw/hero-bg.jpg`],
+  },
 }
 
 const faqJsonLd = {
