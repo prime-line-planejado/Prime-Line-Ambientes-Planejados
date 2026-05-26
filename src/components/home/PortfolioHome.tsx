@@ -18,7 +18,7 @@ export function PortfolioHome() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {destaques.map((projeto, i) => (
-            <Link key={projeto.id} href="/portfolio" data-animate data-delay={String(Math.min(i + 1, 4)) as '1'|'2'|'3'|'4'} className="project-card group">
+            <Link key={projeto.id} href={`/portfolio/${projeto.id}`} data-animate data-delay={String(Math.min(i + 1, 4)) as '1'|'2'|'3'|'4'} className="project-card group">
               <Image
                 src={projeto.imagem}
                 alt={projeto.altText}

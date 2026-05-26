@@ -12,6 +12,9 @@ export interface Projeto {
   local?: string
   ano?: number
   destaque?: boolean
+  imagens?: string[]
+  materiais?: string[]
+  area?: string
 }
 
 export interface Depoimento {

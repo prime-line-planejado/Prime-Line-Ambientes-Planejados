@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { projetos } from '@/data/projetos'
 import type { Categoria } from '@/types'
 
@@ -10,13 +11,6 @@ const categorias: Array<{ label: string; value: Categoria | 'Todos' }> = [
   { label: 'Residencial', value: 'Residencial' },
   { label: 'Corporativo', value: 'Corporativo' },
 ]
-
-function waUrl(titulo: string, local?: string) {
-  const texto = encodeURIComponent(
-    `Olá! Vi o projeto "${titulo}"${local ? ` (${local})` : ''} no portfólio de vocês e gostaria de saber mais. Podem me contar como funciona?`
-  )
-  return `https://wa.me/5531998156666?text=${texto}`
-}
 
 export function FiltroPortfolio() {
   const [ativo, setAtivo] = useState<Categoria | 'Todos'>('Todos')
@@ -45,11 +39,9 @@ export function FiltroPortfolio() {
       {/* Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {filtrados.map(projeto => (
-          <a
+          <Link
             key={projeto.id}
-            href={waUrl(projeto.titulo, projeto.local)}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={`/portfolio/${projeto.id}`}
             aria-label={`Ver detalhes do projeto: ${projeto.titulo}`}
             className="project-card group"
           >
@@ -67,7 +59,7 @@ export function FiltroPortfolio() {
               {projeto.local && <p className="font-body text-xs text-brand-300 mt-1">{projeto.local}</p>}
               {projeto.ano && <p className="font-body text-xs text-brand-400 mt-0.5">{projeto.ano}</p>}
             </div>
-          </a>
+          </Link>
         ))}
       </div>
     </div>
