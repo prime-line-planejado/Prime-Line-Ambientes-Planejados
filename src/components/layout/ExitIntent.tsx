@@ -4,8 +4,6 @@ import { useState, useEffect, useRef } from 'react'
 
 const STORAGE_KEY = 'pl_exit_intent_shown'
 const DELAY_MS = 20_000
-const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY
-
 type Status = 'idle' | 'sending' | 'success' | 'error'
 
 export function ExitIntent() {
@@ -44,16 +42,10 @@ export function ExitIntent() {
     setStatus('sending')
 
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_KEY,
-          subject: `[Prime Line] Lead via exit-intent — ${nome}`,
-          from_name: nome,
-          email,
-          message: `Lead capturado pelo popup de exit-intent. Nome: ${nome} | E-mail: ${email}`,
-        }),
+        body: JSON.stringify({ nome, email, origem: 'exit-intent' }),
       })
       const data = await res.json()
       setStatus(data.success ? 'success' : 'error')
