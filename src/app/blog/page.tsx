@@ -36,11 +36,21 @@ export const metadata: Metadata = {
   },
 }
 
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: `${siteUrl}/blog` },
+  ],
+}
+
 export default function BlogPage() {
   const artigos = getTodosArtigos() as Artigo[]
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <section className="section section--dark">
         <div className="container text-center">
           <SectionTitle label="Conteúdo e inspiração" title="Blog Prime Line" center light />
