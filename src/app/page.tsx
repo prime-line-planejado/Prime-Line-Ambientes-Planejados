@@ -104,7 +104,7 @@ const faqJsonLd = {
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'HomeAndConstructionBusiness',
+  '@type': ['LocalBusiness', 'FurnitureStore', 'HomeAndConstructionBusiness'],
   name: 'Prime Line Ambientes Planejados',
   description:
     'Projetos exclusivos em marcenaria planejada de alto padrão. Cozinhas, quartos, closets, escritórios e salas sob medida em Belo Horizonte.',
@@ -113,7 +113,7 @@ const jsonLd = {
   email: 'contato@primelineplanejados.com.br',
   image: `${siteUrl}/images/raw/hero-bg.jpg`,
   logo: `${siteUrl}/logo.svg`,
-  priceRange: '$$$',
+  priceRange: '$$-$$$',
   currenciesAccepted: 'BRL',
   paymentAccepted: 'Cash, Credit Card, Bank Transfer',
   foundingDate: '2014',
@@ -128,8 +128,8 @@ const jsonLd = {
   },
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: -19.9167,
-    longitude: -43.9345,
+    latitude: -19.9543,
+    longitude: -43.9777,
   },
   hasMap: 'https://maps.google.com/?q=Rua+David+Maurilio+Mourão,+113,+Palmeiras,+Belo+Horizonte+MG+30575-340',
   openingHoursSpecification: [
