@@ -52,6 +52,15 @@ export const metadata: Metadata = {
     description: 'Marcenaria planejada de alto padrão em Belo Horizonte. Cozinhas, closets e ambientes sob medida.',
     images: [`${siteUrl}/images/raw/hero-bg.jpg`],
   },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '32x32' },
+      { url: '/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+    shortcut: '/favicon.ico',
+  },
   robots: { index: true, follow: true },
 }
 
