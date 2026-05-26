@@ -119,6 +119,46 @@ const faqJsonLd = {
         text: 'O prazo médio é de 45 a 60 dias após a aprovação do projeto, incluindo fabricação, transporte e montagem técnica no local.',
       },
     },
+    {
+      '@type': 'Question',
+      name: 'Vocês atendem qual região de Belo Horizonte?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Atendemos toda a cidade de Belo Horizonte e a Região Metropolitana, incluindo bairros como Savassi, Belvedere, Lourdes, Funcionários, Buritis, Sion, Carmo, Mangabeiras, Alphaville Lagoa dos Ingleses, Contagem, Nova Lima e Betim.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Quais materiais vocês utilizam na fabricação?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Trabalhamos exclusivamente com painéis MDF de alta resistência, com acabamentos em laca, fórmica, madeirado e espelhado. Utilizamos ferragens importadas de marcas como Blum e Grass, vidros, mármores e aços inox conforme o projeto.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Como solicitar um orçamento gratuito?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Entre em contato pelo WhatsApp (31) 9 9815-6666 ou preencha o formulário na página de Contato. Agendaremos uma visita técnica gratuita no seu imóvel para medir os espaços e apresentar uma proposta personalizada.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Vocês oferecem garantia nos projetos?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sim. Todos os projetos têm garantia formal contra defeitos de fabricação e instalação. Trabalhamos com materiais e ferragens de marcas reconhecidas, o que assegura durabilidade e qualidade ao longo dos anos.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Qual o valor médio de uma cozinha planejada em BH?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'O investimento em cozinha planejada varia conforme metragem, materiais e acabamentos. Projetos de cozinhas menores partem de R$ 15.000, enquanto cozinhas gourmet com ilha e acabamentos premium chegam a R$ 60.000 ou mais. Oferecemos orçamento detalhado e gratuito após a visita técnica.',
+      },
+    },
   ],
 }
 
@@ -243,6 +283,26 @@ export default function ServicosPage() {
               {
                 q: 'Qual é o prazo de entrega dos móveis planejados?',
                 r: 'O prazo médio é de 45 a 60 dias após a aprovação do projeto, incluindo fabricação, transporte e montagem técnica no local.',
+              },
+              {
+                q: 'Vocês atendem qual região de Belo Horizonte?',
+                r: 'Atendemos toda a cidade de Belo Horizonte e a Região Metropolitana, incluindo Savassi, Belvedere, Lourdes, Funcionários, Buritis, Sion, Carmo, Mangabeiras, Alphaville Lagoa dos Ingleses, Contagem, Nova Lima e Betim.',
+              },
+              {
+                q: 'Quais materiais vocês utilizam na fabricação?',
+                r: 'Trabalhamos exclusivamente com painéis MDF de alta resistência, com acabamentos em laca, fórmica, madeirado e espelhado. Utilizamos ferragens importadas de marcas como Blum e Grass, vidros, mármores e aços inox conforme o projeto.',
+              },
+              {
+                q: 'Como solicitar um orçamento gratuito?',
+                r: 'Entre em contato pelo WhatsApp (31) 9 9815-6666 ou preencha o formulário na página de Contato. Agendaremos uma visita técnica gratuita para medir os espaços e apresentar uma proposta personalizada.',
+              },
+              {
+                q: 'Vocês oferecem garantia nos projetos?',
+                r: 'Sim. Todos os projetos têm garantia formal contra defeitos de fabricação e instalação, com materiais e ferragens de marcas reconhecidas no mercado.',
+              },
+              {
+                q: 'Qual o valor médio de uma cozinha planejada em BH?',
+                r: 'Projetos de cozinhas menores partem de R$ 15.000, enquanto cozinhas gourmet com ilha e acabamentos premium chegam a R$ 60.000 ou mais. Oferecemos orçamento detalhado e gratuito após a visita técnica.',
               },
             ].map(({ q, r }) => (
               <div key={q} className="py-6">

@@ -99,6 +99,14 @@ const faqJsonLd = {
         text: 'Sim, oferecemos condições de parcelamento. Entre em contato pelo WhatsApp para conhecer as opções disponíveis.',
       },
     },
+    {
+      '@type': 'Question',
+      name: 'Quais materiais vocês utilizam na fabricação dos móveis?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Trabalhamos exclusivamente com painéis MDF de alta resistência, com acabamentos em laca, fórmica, madeirado e espelhado. Utilizamos ferragens importadas de marcas como Blum e Grass, além de vidros, mármores e aços inox. Todos os materiais são selecionados para garantir durabilidade e acabamento premium.',
+      },
+    },
   ],
 }
 
