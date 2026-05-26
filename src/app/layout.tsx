@@ -4,6 +4,7 @@ import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { WhatsAppButton } from '@/components/layout/WhatsAppButton'
 import { CookieBanner } from '@/components/layout/CookieBanner'
+import { ScrollAnimations } from '@/components/ui/ScrollAnimations'
 import './globals.css'
 
 const cormorant = Cormorant_Garamond({
@@ -69,6 +70,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pt-BR" className={`${cormorant.variable} ${montserrat.variable}`}>
       <body className="antialiased">
+        <ScrollAnimations />
         <Header />
         <main>{children}</main>
         <Footer />

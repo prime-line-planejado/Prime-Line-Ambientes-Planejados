@@ -37,8 +37,8 @@ export function Depoimentos() {
           <SectionTitle label="O que dizem nossos clientes" title="Histórias reais" center light />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {depoimentos.map(({ id, nome, local, texto, projeto, nota }) => (
-            <div key={id} className="flex flex-col gap-6 p-8 border border-brand-800 hover:border-gold-dark transition-colors duration-300">
+          {depoimentos.map(({ id, nome, local, texto, projeto, nota }, i) => (
+            <div key={id} data-animate data-delay={String(i + 1) as '1' | '2' | '3'} className="flex flex-col gap-6 p-8 border border-brand-800 hover:border-gold-dark transition-colors duration-300">
 
               {/* Estrelas */}
               {nota && <Estrelas nota={nota} />}

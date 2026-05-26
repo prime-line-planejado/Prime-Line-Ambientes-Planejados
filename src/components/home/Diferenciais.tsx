@@ -50,7 +50,9 @@ export function Diferenciais() {
           {itens.map(({ titulo, descricao, icon }, i) => (
             <div
               key={titulo}
-              className={`flex flex-col gap-5 p-8 bg-brand-50 border border-brand-200 hover:border-gold-main transition-colors duration-300 animate-fade-up animate-delay-${i + 1}`}
+              data-animate
+              data-delay={String(i + 1) as '1' | '2' | '3' | '4'}
+              className="flex flex-col gap-5 p-8 bg-brand-50 border border-brand-200 hover:border-gold-main transition-colors duration-300"
             >
               <span className="text-gold-main">{icon}</span>
               <div>

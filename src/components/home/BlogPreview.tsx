@@ -18,8 +18,8 @@ export function BlogPreview() {
           <Link href="/blog" className="btn-outline self-start md:self-auto">Ver todos os artigos</Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {artigos.map((artigo: any) => (
-            <Link key={artigo.slug} href={`/blog/${artigo.slug}`} className="group flex flex-col gap-4">
+          {artigos.map((artigo: any, i: number) => (
+            <Link key={artigo.slug} href={`/blog/${artigo.slug}`} data-animate data-delay={String(i + 1) as '1'|'2'|'3'} className="group flex flex-col gap-4">
               <div className="relative aspect-[16/9] bg-brand-200 overflow-hidden">
                 {artigo.imagem && (
                   <Image
