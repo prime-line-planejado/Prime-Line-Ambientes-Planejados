@@ -65,6 +65,9 @@ export const metadata: Metadata = {
     shortcut: '/favicon.ico',
   },
   robots: { index: true, follow: true },
+  verification: {
+    google: 'Yy69jnreQoNpxEWlNEFoRFZqCWoqSHjsxOozdJdVU5w',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
