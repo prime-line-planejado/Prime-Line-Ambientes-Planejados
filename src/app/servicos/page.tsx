@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 import { CtaContato } from '@/components/home/CtaContato'
 import { servicosResidenciais, servicosCorporativos, etapasProcesso } from '@/data/servicos'
@@ -195,12 +196,23 @@ export default function ServicosPage() {
           <div className="mb-16">
             <SectionTitle label="Para o seu lar" title="Residencial" />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
-            {servicosResidenciais.map(({ id, titulo, descricao }) => (
-              <div key={id} className="flex flex-col gap-4 p-8 bg-brand-50 border border-brand-200 hover:border-gold-main transition-colors duration-300">
-                <span className="block gold-line" />
-                <h3 className="label-caps text-brand-900 mt-2">{titulo}</h3>
-                <p className="font-body font-light text-sm text-brand-600 leading-relaxed">{descricao}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {servicosResidenciais.map(({ id, titulo, descricao, imagem, altText }) => (
+              <div key={id} className="flex flex-col bg-brand-50 border border-brand-200 hover:border-gold-main transition-colors duration-300 overflow-hidden group">
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <Image
+                    src={imagem}
+                    alt={altText}
+                    fill
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="flex flex-col gap-3 p-8">
+                  <span className="block gold-line" />
+                  <h3 className="label-caps text-brand-900 mt-2">{titulo}</h3>
+                  <p className="font-body font-light text-sm text-brand-600 leading-relaxed">{descricao}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -217,12 +229,23 @@ export default function ServicosPage() {
           <div className="mb-16">
             <SectionTitle label="Para o seu negócio" title="Corporativo" />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
-            {servicosCorporativos.map(({ id, titulo, descricao }) => (
-              <div key={id} className="flex flex-col gap-4 p-8 bg-brand-100 border border-brand-200 hover:border-gold-main transition-colors duration-300">
-                <span className="block gold-line" />
-                <h3 className="label-caps text-brand-900 mt-2">{titulo}</h3>
-                <p className="font-body font-light text-sm text-brand-600 leading-relaxed">{descricao}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {servicosCorporativos.map(({ id, titulo, descricao, imagem, altText }) => (
+              <div key={id} className="flex flex-col bg-brand-100 border border-brand-200 hover:border-gold-main transition-colors duration-300 overflow-hidden group">
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <Image
+                    src={imagem}
+                    alt={altText}
+                    fill
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="flex flex-col gap-3 p-8">
+                  <span className="block gold-line" />
+                  <h3 className="label-caps text-brand-900 mt-2">{titulo}</h3>
+                  <p className="font-body font-light text-sm text-brand-600 leading-relaxed">{descricao}</p>
+                </div>
               </div>
             ))}
           </div>
