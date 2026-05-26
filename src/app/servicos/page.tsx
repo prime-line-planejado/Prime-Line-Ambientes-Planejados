@@ -254,7 +254,7 @@ export default function ServicosPage() {
         </div>
       </section>
 
-      <CtaContato />
+      <CtaContato origem="servicos" />
     </>
   )
 }

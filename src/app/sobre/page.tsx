@@ -207,7 +207,7 @@ export default function SobrePage() {
         </div>
       </section>
 
-      <CtaContato />
+      <CtaContato origem="contato" />
     </>
   )
 }

@@ -131,14 +131,14 @@ export default async function BlogArtigoPage({ params }: Props) {
       <article className="section bg-brand-50">
         <div className="container max-w-3xl mx-auto">
           <TocArtigo headings={headings} />
-          <CtaBlogWhatsApp variant="mid" />
+          <CtaBlogWhatsApp variant="mid" tituloArtigo={artigo.title} />
           <ConteudoMDX source={artigo.content} />
           <AutorArtigo autor={artigo.autor} />
           <CompartilharArtigo title={artigo.title} />
         </div>
       </article>
 
-      <CtaBlogWhatsApp variant="end" />
+      <CtaBlogWhatsApp variant="end" tituloArtigo={artigo.title} />
       <ArtigosRelacionados artigos={relacionados} />
     </>
   )

@@ -30,6 +30,11 @@ const faqs = [
       'Sim. Todos os projetos da Prime Line têm garantia formal contra defeitos de fabricação e instalação. Trabalhamos com marcas reconhecidas no mercado de ferragens, painéis e acabamentos, o que assegura durabilidade e qualidade ao longo dos anos.',
   },
   {
+    pergunta: 'Qual é o investimento em móveis planejados?',
+    resposta:
+      'O investimento varia conforme o ambiente, a metragem e os materiais escolhidos. Projetos residenciais partem de R$ 12.000 para ambientes menores, como dormitórios e home offices, e chegam a valores maiores em projetos completos com cozinha, closet e sala integrada. Oferecemos orçamento detalhado e gratuito após a visita técnica — sem surpresas no valor final.',
+  },
+  {
     pergunta: 'Vocês trabalham com financiamento?',
     resposta:
       'Sim, oferecemos condições de parcelamento. Entre em contato pelo WhatsApp para conhecer as opções disponíveis e encontrar a que melhor se encaixa no seu planejamento.',

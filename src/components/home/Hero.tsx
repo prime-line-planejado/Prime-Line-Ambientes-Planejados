@@ -1,8 +1,8 @@
 import Image from 'next/image'
-
-const WA_URL = 'https://wa.me/5531998156666?text=Ol%C3%A1!%20Vi%20o%20trabalho%20de%20voc%C3%AAs%20%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.%20Pode%20me%20contar%20como%20funciona%20o%20processo%3F'
+import { waUrl } from '@/lib/whatsapp'
 
 export function Hero() {
+  const WA_URL = waUrl('home')
   return (
     <section className="relative min-h-screen bg-brand-900 flex items-center justify-center overflow-hidden pt-16">
       {/* Background image (hero-bg.webp quando disponível) */}

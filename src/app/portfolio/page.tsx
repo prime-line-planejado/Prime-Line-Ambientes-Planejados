@@ -112,7 +112,7 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      <CtaContato />
+      <CtaContato origem="portfolio" />
     </>
   )
 }
