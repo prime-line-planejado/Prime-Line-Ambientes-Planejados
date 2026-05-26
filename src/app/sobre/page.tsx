@@ -159,7 +159,7 @@ export default function SobrePage() {
             </div>
             <div className="relative aspect-[4/3] bg-brand-200 overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=800&q=80"
+                src="/images/sobre/nossa-historia.jpg"
                 alt="Detalhe de marcenaria planejada de alto padrão executada pela Prime Line em Belo Horizonte"
                 fill
                 sizes="(max-width:768px) 100vw, 50vw"
