@@ -1,23 +1,132 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://primelineplanejados.com.br'
 const WA_URL = 'https://wa.me/5531998156666?text=Ol%C3%A1!%20Vi%20o%20trabalho%20de%20voc%C3%AAs%20%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.%20Pode%20me%20contar%20como%20funciona%20o%20processo%3F'
+const MAPS_URL = 'https://maps.google.com/?q=Rua+David+Maurilio+Mourão,+113,+Palmeiras,+Belo+Horizonte+MG+30575-340'
 
 export const metadata: Metadata = {
-  title: 'Contato',
-  description: 'Entre em contato com a Prime Line Ambientes Planejados. Agende uma visita técnica gratuita e receba um projeto personalizado em Belo Horizonte.',
+  title: 'Contato e Orçamento Gratuito | Móveis Planejados em Belo Horizonte — Prime Line',
+  description:
+    'Solicite seu orçamento gratuito de móveis planejados em Belo Horizonte. Visita técnica sem compromisso, projeto 3D personalizado e atendimento pelo WhatsApp. Ligue: (31) 9 9815-6666.',
   alternates: { canonical: '/contato' },
+  openGraph: {
+    title: 'Contato | Orçamento Gratuito de Móveis Planejados em BH — Prime Line',
+    description:
+      'Agende sua visita técnica gratuita. Atendemos em Belo Horizonte e região. Fale pelo WhatsApp (31) 9 9815-6666.',
+    type: 'website',
+    url: `${siteUrl}/contato`,
+    locale: 'pt_BR',
+    siteName: 'Prime Line Ambientes Planejados',
+    images: [
+      {
+        url: `${siteUrl}/images/raw/hero-bg.jpg`,
+        width: 1200,
+        height: 630,
+        alt: 'Entre em contato com a Prime Line — Móveis Planejados em Belo Horizonte',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contato | Orçamento Gratuito — Prime Line BH',
+    description: 'Visita técnica gratuita e orçamento sem compromisso. WhatsApp: (31) 9 9815-6666.',
+    images: [`${siteUrl}/images/raw/hero-bg.jpg`],
+  },
 }
+
+const contactPageJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contato — Prime Line Ambientes Planejados',
+  description: 'Entre em contato para agendar visita técnica gratuita e receber orçamento de móveis planejados em Belo Horizonte.',
+  url: `${siteUrl}/contato`,
+  mainEntity: {
+    '@type': 'HomeAndConstructionBusiness',
+    name: 'Prime Line Ambientes Planejados',
+    url: siteUrl,
+    telephone: '+5531998156666',
+    email: 'contato@primelineplanejados.com.br',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Rua David Maurílio Mourão, 113',
+      addressLocality: 'Belo Horizonte',
+      addressRegion: 'MG',
+      postalCode: '30575-340',
+      addressCountry: 'BR',
+      addressNeighborhood: 'Palmeiras',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: -19.9167,
+      longitude: -43.9345,
+    },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '08:00',
+        closes: '18:00',
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Saturday'],
+        opens: '09:00',
+        closes: '13:00',
+      },
+    ],
+    areaServed: { '@type': 'City', name: 'Belo Horizonte' },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+5531998156666',
+      contactType: 'customer service',
+      availableLanguage: 'Portuguese',
+    },
+  },
+}
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+    { '@type': 'ListItem', position: 2, name: 'Contato', item: `${siteUrl}/contato` },
+  ],
+}
+
+const etapas = [
+  { n: '01', t: 'Você entra em contato', d: 'Pelo WhatsApp — sem compromisso.' },
+  { n: '02', t: 'Visita técnica gratuita', d: 'Nossa equipe vai até você medir e entender o espaço.' },
+  { n: '03', t: 'Projeto personalizado', d: 'Recebe o projeto 3D e o orçamento detalhado.' },
+  { n: '04', t: 'Aprovação e produção', d: 'Com sua aprovação, iniciamos a fabricação sob medida.' },
+  { n: '05', t: 'Entrega e montagem', d: 'Instalação pela nossa equipe técnica, sem sujeira.' },
+]
 
 export default function ContatoPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+
       {/* Header */}
       <section className="section section--dark">
         <div className="container text-center">
-          <SectionTitle label="Fale conosco" title="Vamos criar algo incrível juntos" center light />
+
+          {/* Breadcrumb visual */}
+          <nav aria-label="Breadcrumb" className="flex justify-center mb-8">
+            <ol className="flex items-center gap-2 font-body text-xs text-brand-500">
+              <li><Link href="/" className="hover:text-gold-light transition-colors">Home</Link></li>
+              <li aria-hidden="true">
+                <svg viewBox="0 0 6 10" className="w-1.5 h-2.5 text-brand-700" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 1l4 4-4 4"/></svg>
+              </li>
+              <li className="text-brand-400" aria-current="page">Contato</li>
+            </ol>
+          </nav>
+
+          <SectionTitle label="Fale conosco" title="Orçamento Gratuito de Móveis Planejados em BH" center light />
           <p className="font-body font-light text-base text-brand-300 mt-6 max-w-xl mx-auto leading-relaxed">
-            Entre em contato para agendar sua visita técnica gratuita. Sem compromisso, sem burocracia.
+            Visita técnica gratuita, projeto 3D personalizado e orçamento sem compromisso em Belo Horizonte.
           </p>
         </div>
       </section>
@@ -29,23 +138,33 @@ export default function ContatoPage() {
 
             {/* Informações */}
             <div>
-              <SectionTitle label="Informações" title="Como nos encontrar" />
-              <div className="mt-8 space-y-8">
+              <SectionTitle label="Informações" title="Como nos encontrar em BH" />
+              <address className="mt-8 space-y-8 not-italic">
+
                 <div>
                   <p className="label-caps text-brand-700 mb-2">WhatsApp</p>
-                  <a
-                    href={WA_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-display font-light text-2xl text-brand-900 hover:text-gold-main transition-colors"
-                  >
-                    (31) 9 9815-6666
-                  </a>
+                  <div className="flex flex-col gap-1">
+                    <a
+                      href={WA_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-display font-light text-2xl text-brand-900 hover:text-gold-main transition-colors"
+                    >
+                      (31) 9 9815-6666
+                    </a>
+                    <a
+                      href="tel:+5531998156666"
+                      className="font-body text-xs text-brand-500 hover:text-gold-main transition-colors"
+                    >
+                      Toque para ligar
+                    </a>
+                  </div>
                 </div>
+
                 <div>
                   <p className="label-caps text-brand-700 mb-2">Endereço</p>
                   <a
-                    href="https://maps.google.com/?q=Rua+David+Maurilio+Mourão,+113,+Palmeiras,+Belo+Horizonte+MG+30575-340"
+                    href={MAPS_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-body font-light text-base text-brand-700 leading-relaxed hover:text-gold-main transition-colors block"
@@ -55,14 +174,16 @@ export default function ContatoPage() {
                     CEP 30575-340
                   </a>
                 </div>
+
                 <div>
                   <p className="label-caps text-brand-700 mb-2">Horário de atendimento</p>
                   <p className="font-body font-light text-base text-brand-700 leading-relaxed">
-                    Segunda a sexta: 8h às 18h<br />
-                    Sábados: 9h às 13h
+                    Segunda a sexta: <strong className="font-normal">8h às 18h</strong><br />
+                    Sábados: <strong className="font-normal">9h às 13h</strong>
                   </p>
                 </div>
-              </div>
+
+              </address>
 
               <div className="mt-10">
                 <a
@@ -84,17 +205,11 @@ export default function ContatoPage() {
             <div className="bg-brand-50 p-8 border border-brand-200">
               <p className="label-caps text-brand-700 mb-6">O que acontece depois</p>
               <div className="space-y-6">
-                {[
-                  { n: '01', t: 'Você entra em contato', d: 'Pelo WhatsApp ou formulário — sem compromisso.' },
-                  { n: '02', t: 'Visita técnica gratuita', d: 'Nossa equipe vai até você medir e entender o espaço.' },
-                  { n: '03', t: 'Projeto personalizado', d: 'Recebe o projeto 3D e o orçamento detalhado.' },
-                  { n: '04', t: 'Aprovação e produção', d: 'Com sua aprovação, iniciamos a fabricação sob medida.' },
-                  { n: '05', t: 'Entrega e montagem', d: 'Instalação pela nossa equipe técnica, sem sujeira.' },
-                ].map(({ n, t, d }) => (
+                {etapas.map(({ n, t, d }) => (
                   <div key={n} className="flex gap-4">
                     <span className="font-display font-light text-gold-main text-xl w-8 flex-shrink-0">{n}</span>
                     <div>
-                      <p className="font-body font-semibold text-xs text-brand-800 mb-1">{t}</p>
+                      <h3 className="font-body font-semibold text-xs text-brand-800 mb-1">{t}</h3>
                       <p className="font-body font-light text-xs text-brand-500 leading-relaxed">{d}</p>
                     </div>
                   </div>
