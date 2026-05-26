@@ -1,8 +1,7 @@
 'use server'
 
-import { Resend } from 'resend'
-
-const TO_EMAIL = process.env.CONTACT_EMAIL ?? 'contato@primelineplanejados.com.br'
+const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? ''
+const WA_FALLBACK   = 'https://wa.me/5531998156666?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento.'
 
 export type ContatoState =
   | { status: 'idle' }
@@ -16,39 +15,39 @@ export async function enviarContato(
   const nome     = (formData.get('nome')     as string | null)?.trim()
   const telefone = (formData.get('telefone') as string | null)?.trim()
   const ambiente = (formData.get('ambiente') as string | null)?.trim()
-  const mensagem = (formData.get('mensagem') as string | null)?.trim()
+  const mensagem = (formData.get('mensagem') as string | null)?.trim() ?? ''
 
   if (!nome || !telefone || !ambiente) {
     return { status: 'error', message: 'Preencha todos os campos obrigatórios.' }
   }
 
-  if (!process.env.RESEND_API_KEY) {
-    return { status: 'error', message: 'no_api_key' }
+  if (!WEB3FORMS_KEY) {
+    return { status: 'error', message: 'no_key' }
   }
 
   try {
-    const resend = new Resend(process.env.RESEND_API_KEY)
-    await resend.emails.send({
-      from: 'Prime Line Site <onboarding@resend.dev>',
-      to:   TO_EMAIL,
-      replyTo: TO_EMAIL,
-      subject: `Novo contato — ${ambiente} | ${nome}`,
-      html: `
-        <div style="font-family:sans-serif;max-width:520px;margin:auto;color:#3a2f24">
-          <h2 style="color:#a8905a;border-bottom:1px solid #e5ddd0;padding-bottom:12px">
-            Novo contato via site
-          </h2>
-          <table style="width:100%;border-collapse:collapse">
-            <tr><td style="padding:8px 0;font-weight:600;width:140px">Nome</td><td>${nome}</td></tr>
-            <tr><td style="padding:8px 0;font-weight:600">Telefone</td><td>${telefone}</td></tr>
-            <tr><td style="padding:8px 0;font-weight:600">Ambiente</td><td>${ambiente}</td></tr>
-            ${mensagem ? `<tr><td style="padding:8px 0;font-weight:600;vertical-align:top">Mensagem</td><td>${mensagem}</td></tr>` : ''}
-          </table>
-        </div>
-      `,
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        access_key:  WEB3FORMS_KEY,
+        subject:     `Novo contato — ${ambiente} | ${nome}`,
+        from_name:   'Prime Line Site',
+        name:        nome,
+        phone:       telefone,
+        ambiente,
+        message:     mensagem || '—',
+        botcheck:    '',
+      }),
     })
-    return { status: 'ok' }
+
+    const data = await res.json()
+    if (data.success) return { status: 'ok' }
+
+    return { status: 'error', message: 'Erro ao enviar. Tente pelo WhatsApp.' }
   } catch {
     return { status: 'error', message: 'Erro ao enviar. Tente pelo WhatsApp.' }
   }
 }
+
+export { WA_FALLBACK }

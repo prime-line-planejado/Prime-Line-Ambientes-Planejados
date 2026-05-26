@@ -4,7 +4,8 @@ const CANONICAL_DOMAIN = 'primelineplanejados.com.br'
 
 const nextConfig: NextConfig = {
   env: {
-    NEXT_PUBLIC_SITE_URL: `https://${CANONICAL_DOMAIN}`,
+    NEXT_PUBLIC_SITE_URL:      `https://${CANONICAL_DOMAIN}`,
+    NEXT_PUBLIC_WEB3FORMS_KEY: process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? '',
   },
   images: {
     formats: ['image/avif', 'image/webp'],
