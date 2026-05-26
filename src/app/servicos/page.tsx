@@ -156,7 +156,7 @@ const faqJsonLd = {
       name: 'Qual o valor médio de uma cozinha planejada em BH?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'O investimento em cozinha planejada varia conforme metragem, materiais e acabamentos. Projetos de cozinhas menores partem de R$ 15.000, enquanto cozinhas gourmet com ilha e acabamentos premium chegam a R$ 60.000 ou mais. Oferecemos orçamento detalhado e gratuito após a visita técnica.',
+        text: 'O investimento em cozinha planejada varia conforme metragem, materiais e acabamentos. Projetos de cozinhas menores partem de R$ 6.000, enquanto cozinhas gourmet com ilha e acabamentos premium chegam a R$ 60.000 ou mais. Oferecemos orçamento detalhado e gratuito após a visita técnica.',
       },
     },
   ],
@@ -302,7 +302,7 @@ export default function ServicosPage() {
               },
               {
                 q: 'Qual o valor médio de uma cozinha planejada em BH?',
-                r: 'Projetos de cozinhas menores partem de R$ 15.000, enquanto cozinhas gourmet com ilha e acabamentos premium chegam a R$ 60.000 ou mais. Oferecemos orçamento detalhado e gratuito após a visita técnica.',
+                r: 'Projetos de cozinhas menores partem de R$ 6.000, enquanto cozinhas gourmet com ilha e acabamentos premium chegam a R$ 60.000 ou mais. Oferecemos orçamento detalhado e gratuito após a visita técnica.',
               },
             ].map(({ q, r }) => (
               <div key={q} className="py-6">
