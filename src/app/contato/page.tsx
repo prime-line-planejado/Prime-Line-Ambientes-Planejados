@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 import { waUrl } from '@/lib/whatsapp'
+import { FormularioContato } from '@/components/contato/FormularioContato'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://primelineplanejados.com.br'
 const WA_URL = waUrl('contato')
@@ -135,7 +136,7 @@ export default function ContatoPage() {
       {/* Contato grid */}
       <section className="section section--cream">
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
 
             {/* Informações */}
             <div>
@@ -199,6 +200,14 @@ export default function ContatoPage() {
                   </svg>
                   Iniciar conversa no WhatsApp
                 </a>
+              </div>
+            </div>
+
+            {/* Formulário */}
+            <div>
+              <SectionTitle label="Formulário" title="Envie uma mensagem" />
+              <div className="mt-8">
+                <FormularioContato />
               </div>
             </div>
 
