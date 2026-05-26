@@ -9,6 +9,7 @@ const WA_URL = 'https://wa.me/5531998156666?text=Ol%C3%A1!%20Vi%20o%20trabalho%2
 
 const navLinks = [
   { label: 'Portfólio',  href: '/portfolio' },
+  { label: 'Galeria',    href: '/galeria'   },
   { label: 'Serviços',   href: '/servicos'  },
   { label: 'Sobre',      href: '/sobre'     },
   { label: 'Blog',       href: '/blog'      },
