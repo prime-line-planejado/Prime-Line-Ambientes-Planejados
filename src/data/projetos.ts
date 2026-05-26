@@ -19,6 +19,7 @@ export const projetos: Projeto[] = [
       '/images/galeria/cozinha-planejada-cinza-granito-preto-armarios-espelhados-bh.jpg',
       '/images/galeria/cozinha-planejada-cinza-granito-preto-balcao-ripado-nicho-espelhado-bh.jpg',
       '/images/galeria/cozinha-gourmet-planejada-ilha-cooktop-coifa-teto-inox-bh.jpg',
+      '/images/galeria/cozinha-planejada-cinza-granito-preto-pendentes-bh.jpg',
     ],
   },
   {
@@ -38,6 +39,7 @@ export const projetos: Projeto[] = [
       '/images/galeria/dormitorio-luxo-cama-bau-champanhe-guarda-roupa-cabeceira-geometrica-preta-bh.jpg',
       '/images/galeria/dormitorio-planejado-guarda-roupa-cinza-cabeceira-amadeirada-led-bh.jpg',
       '/images/galeria/dormitorio-casal-cabeceira-embutida-guarda-roupa-integrado-cinza-escuro-bh.jpg',
+      '/images/galeria/dormitorio-casal-cabeceira-rose-guarda-roupa-espelho-dourado-bh.jpg',
     ],
   },
   {
@@ -57,6 +59,7 @@ export const projetos: Projeto[] = [
       '/images/galeria/painel-tv-marmore-branco-ripado-cinza-rack-flutuante-belo-horizonte.jpg',
       '/images/galeria/sala-painel-tv-luxo-ripado-cinza-arandelas-cristaleira-dourada-led-bh.jpg',
       '/images/galeria/sala-integrada-painel-tv-amadeirado-nichos-iluminados-bh.jpg',
+      '/images/galeria/sala-painel-tv-ripado-iluminado-nichos-belo-horizonte.jpg',
     ],
   },
   {
@@ -76,6 +79,7 @@ export const projetos: Projeto[] = [
       '/images/galeria/cozinha-planejada-madeira-escura-off-white-forno-embutido-bh.jpg',
       '/images/galeria/cozinha-planejada-grafite-bancada-branca-marmore-geladeira-inox-forno-bh.jpg',
       '/images/galeria/cozinha-planejada-off-white-geladeira-inox-ambientes-planejados-bh.jpg',
+      '/images/galeria/cozinha-balcao-ripado-cinza-pendentes-pretos-led-armarios-brancos-bh.jpg',
     ],
   },
   {
@@ -94,6 +98,8 @@ export const projetos: Projeto[] = [
       '/images/galeria/guarda-roupa-correr-cinza-4-portas-frisos-dourados-piso-madeira-bh.jpg',
       '/images/galeria/guarda-roupa-deslizante-champanhe-interior-branco-nichos-gavetas-bh.jpg',
       '/images/galeria/guarda-roupa-planejado-amadeirado-ripado-nichos-bh.jpg',
+      '/images/galeria/dormitorio-guarda-roupa-canto-champanhe-nicho-amadeirado-lustre-dourado-bh.jpg',
+      '/images/galeria/dormitorio-guarda-roupa-preto-deslizante-cama-piso-madeira-bh.jpg',
     ],
   },
   {
@@ -112,6 +118,8 @@ export const projetos: Projeto[] = [
       '/images/galeria/banheiro-planejado-marmore-branco-bancada-embutida-box-vidro-nicho-bh.jpg',
       '/images/galeria/banheiro-planejado-marmore-cinza-nicho-iluminado-box-vidro-bh.jpg',
       '/images/galeria/banheiro-lavabo-espelho-led-bancada-branca-armario-amadeirado-bh.jpg',
+      '/images/galeria/banheiro-cinza-box-vidro-preto-armario-espelho-bancada-branca-bh.jpg',
+      '/images/galeria/banheiro-moderno-cinza-box-vidro-preto-cuba-preta-marmore-escuro-bh.jpg',
     ],
   },
   {
@@ -130,6 +138,8 @@ export const projetos: Projeto[] = [
       '/images/galeria/dormitorio-guarda-roupa-branco-fullwall-nicho-ripado-cinza-criado-mudo-bh.jpg',
       '/images/galeria/dormitorio-cama-guarda-roupa-superior-branco-cabeceira-acolchoada-led-bh.jpg',
       '/images/galeria/dormitorio-planejado-guarda-roupa-off-white-penteadeira-espelho-arco-bh.jpg',
+      '/images/galeria/dormitorio-cama-planejada-armarios-superiores-cinza-nichos-gavetas-bh.jpg',
+      '/images/galeria/dormitorio-planejado-guarda-roupa-cinza-penteadeira-espelho-redondo-bh.jpg',
     ],
   },
   {
@@ -148,6 +158,8 @@ export const projetos: Projeto[] = [
       '/images/galeria/painel-tv-ripado-amadeirado-led-ambar-rack-branco-prateleira-bh.jpg',
       '/images/galeria/painel-tv-ripado-amadeirado-escuro-fullwall-rack-branco-led-bh.jpg',
       '/images/galeria/sala-tv-minimalista-painel-amadeirado-rack-ripado-bh.jpg',
+      '/images/galeria/sala-tv-painel-amadeirado-rack-sofa-bege-piso-porcelanato-bh.jpg',
+      '/images/galeria/painel-tv-ripado-amadeirado-dourado-prateleira-metal-rack-branco-led-bh.jpg',
     ],
   },
   // ── Corporativo ──────────────────────────────────────────────────────────
@@ -168,6 +180,7 @@ export const projetos: Projeto[] = [
       '/images/galeria/escritorio-home-office-ripado-preto-amadeirado-escuro-bancada-nichos-led-bh.jpg',
       '/images/galeria/home-office-planejado-em-l-bancada-amadeirada-armarios-cinza-ripado-bh.jpg',
       '/images/galeria/escritorio-gamer-bancada-amadeirada-ripado-iluminado-prateleiras-bh.jpg',
+      '/images/galeria/escritorio-home-office-compacto-ripado-preto-bancada-amadeirada-em-l-bh.jpg',
     ],
   },
   {
@@ -186,6 +199,8 @@ export const projetos: Projeto[] = [
       '/images/galeria/home-office-em-l-bancada-amadeirada-ripado-armarios-cinza-prateleiras-bh.jpg',
       '/images/galeria/home-office-em-l-armarios-bege-bancada-amadeirada-prateleiras-bh.jpg',
       '/images/galeria/bancada-home-office-planejada-cinza-amadeirada-armarios-superiores-bh.jpg',
+      '/images/galeria/home-office-escritorio-bancada-amadeirada-dupla-armarios-ripado-bh.jpg',
+      '/images/galeria/home-office-planejado-azul-marinho-bancada-amadeirada-prateleiras-bh.jpg',
     ],
   },
   {
@@ -204,6 +219,8 @@ export const projetos: Projeto[] = [
       '/images/galeria/home-office-compacto-em-l-bancada-amadeirada-ripado-cinza-armario-bh.jpg',
       '/images/galeria/home-office-planejado-azul-marinho-bancada-amadeirada-prateleiras-bh.jpg',
       '/images/galeria/studio-integrado-bancada-amadeirada-ripado-divisoria-armarios-cinza-bh.jpg',
+      '/images/galeria/home-office-em-l-bancada-amadeirada-ripado-armarios-cinza-prateleiras-bh.jpg',
+      '/images/galeria/home-office-em-l-armarios-bege-bancada-amadeirada-prateleiras-bh.jpg',
     ],
   },
   {
@@ -222,6 +239,8 @@ export const projetos: Projeto[] = [
       '/images/galeria/escritorio-home-office-compacto-ripado-preto-bancada-amadeirada-em-l-bh.jpg',
       '/images/galeria/home-office-bancada-amadeirada-armarios-verde-menta-nicho-painel-bh.jpg',
       '/images/galeria/home-office-planejado-em-l-bancada-amadeirada-armarios-cinza-ripado-bh.jpg',
+      '/images/galeria/home-office-escritorio-bancada-amadeirada-dupla-armarios-ripado-bh.jpg',
+      '/images/galeria/bancada-home-office-planejada-cinza-amadeirada-armarios-superiores-bh.jpg',
     ],
   },
 ]

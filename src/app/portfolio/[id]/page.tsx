@@ -82,10 +82,12 @@ export default async function ProjetoPage({ params }: Props) {
       name: 'Prime Line Ambientes Planejados',
       url: siteUrl,
     },
-    image: todasImagens.map(src => ({
+    image: todasImagens.map((src, i) => ({
       '@type': 'ImageObject',
       url: `${siteUrl}${src}`,
+      name: i === 0 ? projeto.titulo : `${projeto.titulo} — foto ${i + 1}`,
       description: projeto.altText,
+      representativeOfPage: i === 0,
     })),
   }
 
@@ -192,8 +194,10 @@ export default async function ProjetoPage({ params }: Props) {
         <section className="section section--cream">
           <div className="container">
             <p className="label-caps text-brand-500 mb-8">Mais fotos do projeto</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
-              {projeto.imagens.map((src, i) => (
+
+            {/* Linha destaque: primeiras 2 fotos */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+              {projeto.imagens.slice(0, 2).map((src, i) => (
                 <div key={src} className="relative aspect-[4/3] bg-brand-200 overflow-hidden">
                   <Image
                     src={src}
@@ -205,6 +209,29 @@ export default async function ProjetoPage({ params }: Props) {
                 </div>
               ))}
             </div>
+
+            {/* Linha adicional: fotos 3 em diante */}
+            {projeto.imagens.length > 2 && (
+              <div className={`grid gap-4 ${
+                projeto.imagens.slice(2).length === 1
+                  ? 'grid-cols-1'
+                  : projeto.imagens.slice(2).length === 2
+                  ? 'grid-cols-2'
+                  : 'grid-cols-2 sm:grid-cols-3'
+              }`}>
+                {projeto.imagens.slice(2).map((src, i) => (
+                  <div key={src} className="relative aspect-[4/3] bg-brand-200 overflow-hidden">
+                    <Image
+                      src={src}
+                      alt={`${projeto.titulo} — foto ${i + 4}`}
+                      fill
+                      sizes="(max-width:640px) 50vw, 33vw"
+                      className="object-cover hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </section>
       )}
