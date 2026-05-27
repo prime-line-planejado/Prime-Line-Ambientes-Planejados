@@ -9,7 +9,7 @@ export function Hero() {
       <Image
         src="/images/raw/hero-bg.jpg"
         alt="Cozinha planejada de alto padrão com iluminação LED — Prime Line Ambientes Planejados Belo Horizonte"
-        fill priority quality={90}
+        fill priority loading="eager" quality={90}
         className="object-cover object-center"
         sizes="100vw"
       />
