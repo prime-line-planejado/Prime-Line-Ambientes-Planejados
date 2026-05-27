@@ -38,7 +38,7 @@ export function GaleriaGrid() {
 
       {/* Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-        {itens.map(item => (
+        {itens.map((item, i) => (
           <div
             key={item.arquivo}
             className="group relative aspect-[4/3] overflow-hidden bg-brand-100"
@@ -47,6 +47,7 @@ export function GaleriaGrid() {
               src={`/images/galeria/${item.arquivo}`}
               alt={`${item.titulo} — Prime Line Ambientes Planejados, Belo Horizonte`}
               fill
+              priority={i < 4}
               sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
