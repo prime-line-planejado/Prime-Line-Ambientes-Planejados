@@ -35,13 +35,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `${siteUrl}/portfolio/${id}`,
       locale: 'pt_BR',
       siteName: 'Prime Line Ambientes Planejados',
-      images: [{ url: projeto.imagem, width: 1200, height: 800, alt: projeto.altText }],
+      images: [{ url: `${siteUrl}${projeto.imagem}`, width: 1200, height: 800, alt: projeto.altText }],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: [projeto.imagem],
+      images: [`${siteUrl}${projeto.imagem}`],
     },
   }
 }
