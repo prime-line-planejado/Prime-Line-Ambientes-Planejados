@@ -26,8 +26,8 @@ export function Header() {
       <div className="container flex items-center justify-between h-16 px-6">
 
         {/* Logo */}
-        <Link href="/" className="flex-shrink-0" onClick={() => setOpen(false)}>
-          <Image src="/logo.svg" alt="Prime Line Planejados" width={180} height={45} priority />
+        <Link href="/" className="flex-shrink-0" aria-label="Prime Line Ambientes Planejados — Página inicial" onClick={() => setOpen(false)}>
+          <Image src="/logo.svg" alt="" width={180} height={45} priority />
         </Link>
 
         {/* Desktop nav */}
@@ -36,9 +36,10 @@ export function Header() {
             <Link
               key={href}
               href={href}
-              className={`label-caps transition-colors duration-200 ${
+              aria-current={pathname.startsWith(href) ? 'page' : undefined}
+              className={`label-caps transition-colors duration-200 relative pb-0.5 ${
                 pathname.startsWith(href)
-                  ? 'text-brand-900'
+                  ? 'text-brand-900 after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-gold-main'
                   : 'text-brand-500 hover:text-brand-900'
               }`}
             >
@@ -61,6 +62,8 @@ export function Header() {
         <button
           onClick={() => setOpen(!open)}
           aria-label={open ? 'Fechar menu' : 'Abrir menu'}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
           className="md:hidden flex flex-col gap-1.5 p-2"
         >
           <span className={`block w-6 h-px bg-brand-800 transition-transform duration-200 ${open ? 'rotate-45 translate-y-[7px]' : ''}`} />
@@ -71,7 +74,7 @@ export function Header() {
 
       {/* Mobile drawer */}
       {open && (
-        <div className="md:hidden bg-brand-50 border-t border-brand-200 px-6 py-8 flex flex-col gap-6">
+        <div id="mobile-menu" className="md:hidden bg-brand-50 border-t border-brand-200 px-6 py-8 flex flex-col gap-6">
           {navLinks.map(({ label, href }) => (
             <Link
               key={href}

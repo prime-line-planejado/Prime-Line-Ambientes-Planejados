@@ -41,7 +41,7 @@ export function Hero() {
         </div>
 
         {/* Trust badges */}
-        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 mt-10 animate-fade-up animate-delay-3">
+        <div className="grid grid-cols-2 sm:grid-cols-4 justify-items-center gap-4 mt-10 animate-fade-up animate-delay-3">
           {[
             {
               icon: <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />,
@@ -64,7 +64,7 @@ export function Hero() {
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4 text-gold-main flex-shrink-0" aria-hidden="true">
                 {icon}
               </svg>
-              <span className="font-body font-light text-xs text-brand-300 whitespace-nowrap">{label}</span>
+              <span className="font-body font-light text-xs text-brand-300 text-center leading-snug">{label}</span>
             </div>
           ))}
         </div>

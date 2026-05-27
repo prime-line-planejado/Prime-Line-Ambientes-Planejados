@@ -62,6 +62,7 @@ export function FAQ() {
                 onClick={() => setAberto(aberto === i ? null : i)}
                 className="w-full flex items-center justify-between gap-6 py-6 text-left group"
                 aria-expanded={aberto === i}
+                aria-controls={`faq-resposta-${i}`}
               >
                 <span className="font-body font-light text-base text-brand-900 group-hover:text-brand-600 transition-colors leading-snug">
                   {faq.pergunta}
@@ -76,11 +77,15 @@ export function FAQ() {
                   <path d="M12 5v14M5 12h14" strokeLinecap="round" />
                 </svg>
               </button>
-              {aberto === i && (
+              <div
+                id={`faq-resposta-${i}`}
+                role="region"
+                hidden={aberto !== i}
+              >
                 <p className="pb-6 font-body font-light text-sm text-brand-600 leading-relaxed">
                   {faq.resposta}
                 </p>
-              )}
+              </div>
             </div>
           ))}
         </div>

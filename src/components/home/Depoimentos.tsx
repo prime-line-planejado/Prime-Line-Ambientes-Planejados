@@ -38,7 +38,7 @@ export function Depoimentos() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {depoimentos.map(({ id, nome, local, texto, projeto, nota }, i) => (
-            <div key={id} data-animate data-delay={String(i + 1) as '1' | '2' | '3'} className="flex flex-col gap-6 p-8 border border-brand-800 hover:border-gold-dark transition-colors duration-300">
+            <div key={id} data-animate data-delay={String(Math.min((i % 3) + 1, 3)) as '1' | '2' | '3'} className="flex flex-col gap-6 p-8 border border-brand-800 hover:border-gold-dark transition-colors duration-300">
 
               {/* Estrelas */}
               {nota && <Estrelas nota={nota} />}
@@ -79,7 +79,7 @@ export function Depoimentos() {
         <p className="mt-10 text-center font-body font-light text-xs text-brand-600">
           Veja mais avaliações no{' '}
           <a
-            href="https://www.google.com/maps/search/Prime+Line+Ambientes+Planejados+Belo+Horizonte"
+            href="https://www.google.com/maps/place/Prime+Line+Ambientes+Planejados/@-19.9543,-43.9777,17z"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gold-dark hover:text-gold-main transition-colors"

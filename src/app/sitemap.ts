@@ -10,7 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const pages: MetadataRoute.Sitemap = [
     { url: siteUrl,                   lastModified: new Date(), changeFrequency: 'weekly',  priority: 1.0 },
     { url: `${siteUrl}/portfolio`,    lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
-    { url: `${siteUrl}/galeria`,      lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${siteUrl}/galeria`,      lastModified: new Date(), changeFrequency: 'weekly',  priority: 0.8 },
     { url: `${siteUrl}/servicos`,     lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${siteUrl}/contato`,      lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${siteUrl}/sobre`,        lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },

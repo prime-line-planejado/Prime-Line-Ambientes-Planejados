@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     description:
       'Cozinhas, closets e ambientes sob medida de alto padrão em BH. Visita técnica gratuita, projeto 3D personalizado e garantia formal. Solicite seu orçamento.',
     type: 'website',
-    url: siteUrl,
+    url: `${siteUrl}/`,
     locale: 'pt_BR',
     siteName: 'Prime Line Ambientes Planejados',
     images: [
@@ -140,7 +140,12 @@ const jsonLd = {
     latitude: -19.9543,
     longitude: -43.9777,
   },
-  hasMap: 'https://maps.google.com/?q=Rua+David+Maurilio+Mourão,+113,+Palmeiras,+Belo+Horizonte+MG+30575-340',
+  hasMap: 'https://www.google.com/maps/place/Prime+Line+Ambientes+Planejados/@-19.9543,-43.9777,17z',
+  sameAs: [
+    'https://www.instagram.com/primeline_planejados',
+    'https://www.google.com/maps/place/Prime+Line+Ambientes+Planejados/@-19.9543,-43.9777,17z',
+    'https://primelineplanejados.com.br',
+  ],
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
@@ -183,32 +188,50 @@ const jsonLd = {
     ratingValue: '5',
     bestRating: '5',
     worstRating: '1',
-    reviewCount: '3',
+    reviewCount: '6',
   },
   review: [
     {
       '@type': 'Review',
       author: { '@type': 'Person', name: 'Fernanda Alvarenga' },
       reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-      reviewBody:
-        'A Prime Line transformou completamente nossa cozinha. Cada detalhe foi pensado para o nosso jeito de viver. Qualidade impecável e equipe atenciosa do início ao fim.',
+      reviewBody: 'A Prime Line transformou completamente nossa cozinha. Cada detalhe foi pensado para o nosso jeito de viver. Qualidade impecável e equipe atenciosa do início ao fim.',
       name: 'Cozinha com Ilha Central',
     },
     {
       '@type': 'Review',
       author: { '@type': 'Person', name: 'Rodrigo e Camila Sousa' },
       reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-      reviewBody:
-        'Finalmente um projeto que realmente ouviu o que queríamos. O closet e a suíte ficaram além do que imaginávamos. Recomendamos sem hesitar.',
+      reviewBody: 'Finalmente um projeto que realmente ouviu o que queríamos. O closet e a suíte ficaram além do que imaginávamos. Recomendamos sem hesitar.',
       name: 'Suíte Master com Closet',
     },
     {
       '@type': 'Review',
       author: { '@type': 'Person', name: 'Marcela Drummond' },
       reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-      reviewBody:
-        'Profissionalismo em cada etapa. O prazo foi cumprido, a montagem foi limpa e o resultado é deslumbrante. Já indicamos para três amigos.',
+      reviewBody: 'Profissionalismo em cada etapa. O prazo foi cumprido, a montagem foi limpa e o resultado é deslumbrante. Já indicamos para três amigos.',
       name: 'Sala Integrada e Home Office',
+    },
+    {
+      '@type': 'Review',
+      author: { '@type': 'Person', name: 'André Tavares' },
+      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+      reviewBody: 'Contratei a Prime Line para um home office e fiquei impressionado com o nível de atenção ao projeto. A bancada em L com ripado ficou exatamente como eu imaginava — e o prazo foi cumprido à risca.',
+      name: 'Home Office em L',
+    },
+    {
+      '@type': 'Review',
+      author: { '@type': 'Person', name: 'Beatriz e Luís Henrique Faria' },
+      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+      reviewBody: 'Nossa cozinha era pequena e sem graça. A Prime Line transformou o espaço com uma ilha planejada que virou o coração da casa. Hoje recebo visitas só para mostrar a cozinha.',
+      name: 'Cozinha Integrada com Ilha',
+    },
+    {
+      '@type': 'Review',
+      author: { '@type': 'Person', name: 'Patrícia Mendes' },
+      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+      reviewBody: 'O atendimento desde o primeiro contato foi diferenciado. Senti que realmente se importavam com o resultado final. O banheiro planejado ficou com cara de spa — superou todas as expectativas.',
+      name: 'Banheiro em Mármore',
     },
   ],
 }

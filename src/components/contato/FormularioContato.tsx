@@ -134,6 +134,24 @@ export function FormularioContato() {
         />
       </div>
 
+      {/* Consentimento LGPD */}
+      <div className="flex items-start gap-3">
+        <input
+          id="consentimento"
+          name="consentimento"
+          type="checkbox"
+          required
+          className="mt-0.5 w-4 h-4 flex-shrink-0 border border-brand-300 accent-gold-main cursor-pointer"
+        />
+        <label htmlFor="consentimento" className="font-body font-light text-xs text-brand-600 leading-relaxed cursor-pointer">
+          Concordo com o uso dos meus dados para contato pela Prime Line, conforme a{' '}
+          <a href="/politica-de-privacidade" target="_blank" rel="noopener noreferrer" className="text-gold-main hover:text-brand-900 transition-colors underline underline-offset-2">
+            Política de Privacidade
+          </a>
+          .
+        </label>
+      </div>
+
       {state.status === 'error' && !noApiKey && (
         <p className="font-body text-xs text-red-600">{state.message}</p>
       )}

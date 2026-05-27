@@ -146,7 +146,7 @@ export default function SobrePage() {
 
           <p className="label-caps text-gold-light mb-6">Quem somos</p>
           <h1 className="font-display font-light text-5xl md:text-7xl text-brand-50 leading-tight mb-8">
-            Marcenaria Planejada de Alto Padrão<br />
+            Marcenaria Planejada de Alto Padrão{' '}<br />
             <em className="text-gold-light not-italic">em Belo Horizonte</em>
           </h1>
           <p className="font-body font-light text-lg text-brand-300 leading-relaxed max-w-2xl">

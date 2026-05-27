@@ -27,7 +27,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://primelineplanejados
 
 export const metadata: Metadata = {
   title: {
-    default: 'Prime Line Ambientes Planejados | Móveis Planejados em Belo Horizonte',
+    default: 'Móveis Planejados em BH | Prime Line — Orçamento Grátis',
     template: '%s | Prime Line Planejados',
   },
   description:
@@ -64,6 +64,7 @@ export const metadata: Metadata = {
     apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
     shortcut: '/favicon.ico',
   },
+  themeColor: '#1a1a18',
   robots: { index: true, follow: true },
   verification: {
     google: 'Yy69jnreQoNpxEWlNEFoRFZqCWoqSHjsxOozdJdVU5w',
