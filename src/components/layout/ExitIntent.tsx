@@ -22,18 +22,41 @@ export function ExitIntent() {
   }
 
   useEffect(() => {
-    // Trigger 1: mouse leaves viewport toward top
+    const isTouch = 'ontouchstart' in window
+
+    // Desktop: mouse leaves viewport toward top
     function onMouseLeave(e: MouseEvent) {
       if (e.clientY <= 5) show()
     }
 
-    // Trigger 2: time-based fallback
-    const timer = setTimeout(show, DELAY_MS)
+    // Mobile: scroll down >60% then scroll back up ≥150px
+    let maxScrollY = 0
+    function onScroll() {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight
+      if (scrollable <= 0) return
+      const pct = window.scrollY / scrollable
 
-    document.addEventListener('mouseleave', onMouseLeave)
+      if (pct > 0.6 && window.scrollY > maxScrollY) {
+        maxScrollY = window.scrollY
+      }
+      if (maxScrollY > 0 && window.scrollY < maxScrollY - 150) {
+        show()
+      }
+    }
+
+    // Time-based fallback (desktop: 20s, mobile: 30s)
+    const timer = setTimeout(show, isTouch ? 30_000 : DELAY_MS)
+
+    if (isTouch) {
+      window.addEventListener('scroll', onScroll, { passive: true })
+    } else {
+      document.addEventListener('mouseleave', onMouseLeave)
+    }
+
     return () => {
-      document.removeEventListener('mouseleave', onMouseLeave)
       clearTimeout(timer)
+      document.removeEventListener('mouseleave', onMouseLeave)
+      window.removeEventListener('scroll', onScroll)
     }
   }, [])
 

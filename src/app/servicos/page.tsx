@@ -37,41 +37,47 @@ export const metadata: Metadata = {
   },
 }
 
+const priceRanges: Record<string, string> = {
+  sr1: 'R$6.000 – R$60.000',
+  sr2: 'R$4.000 – R$30.000',
+  sr3: 'R$3.000 – R$25.000',
+  sr4: 'R$1.500 – R$12.000',
+  sc1: 'R$5.000 – R$40.000',
+  sc2: 'R$4.000 – R$35.000',
+  sc3: 'R$2.500 – R$20.000',
+  sc4: 'R$4.000 – R$30.000',
+}
+
+const makeServiceItem = (s: { id: string; titulo: string; descricao: string }, position: number) => ({
+  '@type': 'ListItem',
+  position,
+  item: {
+    '@type': 'Service',
+    name: s.titulo,
+    description: s.descricao,
+    provider: {
+      '@type': 'LocalBusiness',
+      name: 'Prime Line Ambientes Planejados',
+      url: 'https://primelineplanejados.com.br',
+      areaServed: { '@type': 'City', name: 'Belo Horizonte' },
+    },
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'BRL',
+      priceRange: priceRanges[s.id] ?? 'Sob consulta',
+      availability: 'https://schema.org/InStock',
+      areaServed: { '@type': 'City', name: 'Belo Horizonte' },
+    },
+  },
+})
+
 const serviceJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
   name: 'Serviços de Móveis Planejados — Prime Line Ambientes Planejados',
   itemListElement: [
-    ...servicosResidenciais.map((s, i) => ({
-      '@type': 'ListItem',
-      position: i + 1,
-      item: {
-        '@type': 'Service',
-        name: s.titulo,
-        description: s.descricao,
-        provider: {
-          '@type': 'LocalBusiness',
-          name: 'Prime Line Ambientes Planejados',
-          url: 'https://primelineplanejados.com.br',
-          areaServed: { '@type': 'City', name: 'Belo Horizonte' },
-        },
-      },
-    })),
-    ...servicosCorporativos.map((s, i) => ({
-      '@type': 'ListItem',
-      position: servicosResidenciais.length + i + 1,
-      item: {
-        '@type': 'Service',
-        name: s.titulo,
-        description: s.descricao,
-        provider: {
-          '@type': 'LocalBusiness',
-          name: 'Prime Line Ambientes Planejados',
-          url: 'https://primelineplanejados.com.br',
-          areaServed: { '@type': 'City', name: 'Belo Horizonte' },
-        },
-      },
-    })),
+    ...servicosResidenciais.map((s, i) => makeServiceItem(s, i + 1)),
+    ...servicosCorporativos.map((s, i) => makeServiceItem(s, servicosResidenciais.length + i + 1)),
   ],
 }
 
