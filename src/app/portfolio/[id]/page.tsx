@@ -50,7 +50,7 @@ function waUrl(titulo: string, local?: string) {
   const texto = encodeURIComponent(
     `Olá! Vi o projeto "${titulo}"${local ? ` (${local})` : ''} no portfólio de vocês e gostaria de um orçamento para algo similar.`
   )
-  return `https://wa.me/5531971916235?text=${texto}`
+  return `https://wa.me/5531998156666?text=${texto}`
 }
 
 export default async function ProjetoPage({ params }: Props) {

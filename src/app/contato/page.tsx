@@ -61,8 +61,8 @@ const contactPageJsonLd = {
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: -19.9167,
-      longitude: -43.9345,
+      latitude: -19.9543,
+      longitude: -43.9777,
     },
     openingHoursSpecification: [
       {

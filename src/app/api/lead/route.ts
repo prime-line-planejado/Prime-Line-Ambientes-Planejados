@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
 
     // Envia e-mail de notificação
     const dataHora = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })
-    const waLink = `https://wa.me/5531971916235?text=${encodeURIComponent(`Olá ${nome}, vi que você se cadastrou no site da Prime Line! Posso ajudar a agendar sua visita técnica gratuita?`)}`
+    const waLink = `https://wa.me/5531998156666?text=${encodeURIComponent(`Olá ${nome}, vi que você se cadastrou no site da Prime Line! Posso ajudar a agendar sua visita técnica gratuita?`)}`
 
     await resend.emails.send({
       from: 'Prime Line Site <onboarding@resend.dev>',

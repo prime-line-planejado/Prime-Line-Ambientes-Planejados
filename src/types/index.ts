@@ -1,6 +1,6 @@
 export type Categoria = 'Todos' | 'Residencial' | 'Corporativo'
 
-export type CategoriaBlog = 'Todos' | 'Dicas' | 'Tendências' | 'Materiais' | 'Projetos' | 'Residencial' | 'Corporativo'
+export type CategoriaBlog = 'Todos' | 'Dicas' | 'Tendências' | 'Materiais' | 'Projetos' | 'Planejamento' | 'Cozinhas' | 'Dormitórios' | 'Closets' | 'Home Office' | 'Salas & Painéis' | 'Banheiros' | 'Residencial' | 'Corporativo'
 
 export interface Projeto {
   id: string

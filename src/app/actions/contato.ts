@@ -1,5 +1,7 @@
 'use server'
 
+import { supabaseAdmin } from '@/lib/supabase-server'
+
 const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? ''
 const WA_FALLBACK   = 'https://wa.me/5531998156666?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento.'
 
@@ -19,6 +21,17 @@ export async function enviarContato(
 
   if (!nome || !telefone || !ambiente) {
     return { status: 'error', message: 'Preencha todos os campos obrigatórios.' }
+  }
+
+  // Salva no Supabase (origem = 'formulario-contato')
+  try {
+    await supabaseAdmin.from('leads').insert({
+      nome,
+      email: telefone,
+      origem: `formulario-contato — ${ambiente}`,
+    })
+  } catch (err) {
+    console.error('[contato] Supabase error:', err)
   }
 
   if (!WEB3FORMS_KEY) {

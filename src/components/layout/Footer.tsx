@@ -8,6 +8,7 @@ const instagram = process.env.NEXT_PUBLIC_INSTAGRAM ?? '@primeline_planejados'
 
 const links = [
   { label: 'Portfólio', href: '/portfolio' },
+  { label: 'Galeria',   href: '/galeria'   },
   { label: 'Serviços',  href: '/servicos'  },
   { label: 'Sobre',     href: '/sobre'     },
   { label: 'Blog',      href: '/blog'      },
