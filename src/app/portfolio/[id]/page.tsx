@@ -3,8 +3,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { projetos } from '@/data/projetos'
-import { SectionTitle } from '@/components/ui/SectionTitle'
 import { CtaContato } from '@/components/home/CtaContato'
+import { GaleriaProjetoLightbox } from '@/components/portfolio/GaleriaProjetoLightbox'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://primelineplanejados.com.br'
 
@@ -61,6 +61,10 @@ export default async function ProjetoPage({ params }: Props) {
   const idx = projetos.findIndex(p => p.id === id)
   const anterior = projetos[idx - 1] ?? null
   const proximo = projetos[idx + 1] ?? null
+
+  const outros = projetos.filter(p => p.id !== id)
+  const mesmaCategoria = outros.filter(p => p.categoria === projeto.categoria)
+  const relacionados = (mesmaCategoria.length >= 3 ? mesmaCategoria : [...mesmaCategoria, ...outros.filter(p => p.categoria !== projeto.categoria)]).slice(0, 3)
 
   const todasImagens = [projeto.imagem, ...(projeto.imagens ?? [])]
 
@@ -146,6 +150,7 @@ export default async function ProjetoPage({ params }: Props) {
           alt={projeto.altText}
           fill
           priority
+          loading="eager"
           sizes="100vw"
           className="object-cover"
         />
@@ -157,7 +162,7 @@ export default async function ProjetoPage({ params }: Props) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {/* Texto */}
             <div className="md:col-span-2">
-              <SectionTitle label="Sobre o projeto" title={projeto.titulo} />
+              <p className="label-caps text-brand-700">Sobre o projeto</p>
               <p className="font-body font-light text-base text-brand-600 leading-relaxed mt-6 max-w-prose">
                 {projeto.descricao}
               </p>
@@ -191,47 +196,45 @@ export default async function ProjetoPage({ params }: Props) {
 
       {/* Galeria adicional */}
       {projeto.imagens && projeto.imagens.length > 0 && (
+        <GaleriaProjetoLightbox imagens={projeto.imagens} titulo={projeto.titulo} />
+      )}
+
+      {/* Projetos relacionados */}
+      {relacionados.length > 0 && (
         <section className="section section--cream">
           <div className="container">
-            <p className="label-caps text-brand-500 mb-8">Mais fotos do projeto</p>
-
-            {/* Linha destaque: primeiras 2 fotos */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-              {projeto.imagens.slice(0, 2).map((src, i) => (
-                <div key={src} className="relative aspect-[4/3] bg-brand-200 overflow-hidden">
-                  <Image
-                    src={src}
-                    alt={`${projeto.titulo} — foto ${i + 2}`}
-                    fill
-                    sizes="(max-width:640px) 100vw, 50vw"
-                    className="object-cover hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-              ))}
+            <div className="flex items-end justify-between mb-10 gap-4">
+              <div>
+                <p className="label-caps text-gold-main mb-2">Continue explorando</p>
+                <h2 className="font-display font-light text-3xl text-brand-900">
+                  Projetos similares
+                </h2>
+              </div>
+              <Link href="/portfolio" className="font-body text-sm text-gold-main hover:text-brand-900 transition-colors whitespace-nowrap">
+                Ver portfólio →
+              </Link>
             </div>
-
-            {/* Linha adicional: fotos 3 em diante */}
-            {projeto.imagens.length > 2 && (
-              <div className={`grid gap-4 ${
-                projeto.imagens.slice(2).length === 1
-                  ? 'grid-cols-1'
-                  : projeto.imagens.slice(2).length === 2
-                  ? 'grid-cols-2'
-                  : 'grid-cols-2 sm:grid-cols-3'
-              }`}>
-                {projeto.imagens.slice(2).map((src, i) => (
-                  <div key={src} className="relative aspect-[4/3] bg-brand-200 overflow-hidden">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {relacionados.map(p => (
+                <Link key={p.id} href={`/portfolio/${p.id}`} className="group flex flex-col gap-3">
+                  <div className="relative aspect-[4/3] bg-brand-200 overflow-hidden">
                     <Image
-                      src={src}
-                      alt={`${projeto.titulo} — foto ${i + 4}`}
+                      src={p.imagem}
+                      alt={p.altText}
                       fill
-                      sizes="(max-width:640px) 50vw, 33vw"
-                      className="object-cover hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width:640px) 100vw, 33vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
-                ))}
-              </div>
-            )}
+                  <div>
+                    <p className="label-caps text-brand-500 mb-1">{p.categoria}{p.local ? ` — ${p.local}` : ''}</p>
+                    <h3 className="font-display font-light text-lg text-brand-900 group-hover:text-brand-500 transition-colors leading-snug">
+                      {p.titulo}
+                    </h3>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
       )}
@@ -245,7 +248,7 @@ export default async function ProjetoPage({ params }: Props) {
                 href={`/portfolio/${anterior.id}`}
                 className="group flex items-center gap-3 text-brand-600 hover:text-brand-900 transition-colors"
               >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5 group-hover:-translate-x-1 transition-transform">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5 flex-shrink-0 group-hover:-translate-x-1 transition-transform">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
                 </svg>
                 <div>
@@ -253,7 +256,20 @@ export default async function ProjetoPage({ params }: Props) {
                   <p className="font-body text-sm">{anterior.titulo}</p>
                 </div>
               </Link>
-            ) : <div />}
+            ) : (
+              <Link
+                href="/portfolio"
+                className="group flex items-center gap-3 text-brand-600 hover:text-brand-900 transition-colors"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5 flex-shrink-0 group-hover:-translate-x-1 transition-transform">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+                <div>
+                  <p className="label-caps text-brand-400 mb-0.5">Voltar ao</p>
+                  <p className="font-body text-sm">Portfólio</p>
+                </div>
+              </Link>
+            )}
 
             <Link href="/portfolio" className="btn-outline flex-shrink-0">
               Ver todos
@@ -268,11 +284,24 @@ export default async function ProjetoPage({ params }: Props) {
                   <p className="label-caps text-brand-400 mb-0.5">Próximo projeto</p>
                   <p className="font-body text-sm">{proximo.titulo}</p>
                 </div>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5 group-hover:translate-x-1 transition-transform">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5 flex-shrink-0 group-hover:translate-x-1 transition-transform">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
               </Link>
-            ) : <div />}
+            ) : (
+              <Link
+                href="/portfolio"
+                className="group flex items-center gap-3 text-right text-brand-600 hover:text-brand-900 transition-colors"
+              >
+                <div>
+                  <p className="label-caps text-brand-400 mb-0.5">Ver todos os</p>
+                  <p className="font-body text-sm">Projetos</p>
+                </div>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5 flex-shrink-0 group-hover:translate-x-1 transition-transform">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            )}
           </div>
         </div>
       </section>

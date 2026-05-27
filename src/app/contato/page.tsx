@@ -230,6 +230,32 @@ export default function ContatoPage() {
           </div>
         </div>
       </section>
+
+      {/* Mapa */}
+      <section aria-label="Localização Prime Line no mapa">
+        <div className="relative w-full h-80 md:h-96 bg-brand-200">
+          <iframe
+            src={
+              process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED ||
+              'https://maps.google.com/maps?q=-19.9543,-43.9777&z=16&output=embed'
+            }
+            title="Localização Prime Line Ambientes Planejados — Rua David Maurílio Mourão, 113, Palmeiras, Belo Horizonte"
+            width="100%"
+            height="100%"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="border-0 w-full h-full grayscale hover:grayscale-0 transition-all duration-500"
+            allowFullScreen
+          />
+          {/* Overlay com endereço */}
+          <div className="absolute bottom-4 left-4 bg-brand-900/90 px-5 py-3 pointer-events-none">
+            <p className="label-caps text-gold-main mb-1">Showroom</p>
+            <p className="font-body font-light text-xs text-brand-200 leading-relaxed">
+              Rua David Maurílio Mourão, 113 — Palmeiras, BH
+            </p>
+          </div>
+        </div>
+      </section>
     </>
   )
 }

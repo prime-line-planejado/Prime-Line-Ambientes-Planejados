@@ -5,7 +5,7 @@ export const projetos: Projeto[] = [
   {
     id: 'r1',
     titulo: 'Cozinha Gourmet com Ilha em Granito Preto',
-    descricao: 'Cozinha planejada de luxo com ilha em granito preto, armários laqueados e integração total com a sala de jantar. Ferragens Blum full-extension em todos os módulos, iluminação LED embutida e passagem de cabos invisível.',
+    descricao: 'O desafio era transformar uma cozinha de 26 m² no Savassi em um ambiente gourmet de alto padrão que funcionasse como extensão da sala de jantar — sem perder praticidade no dia a dia. O projeto entregou armários superiores laqueados em off-white com ferragens Blum full-extension silenciosas, island central em granito Preto São Gabriel com balcão para banquetas e passagem de cabos invisível. A iluminação foi estratégica: LED âmbar embutido sob os armários superiores cria atmosfera aconchegante durante refeições, enquanto spots de teto destacam a textura do granito. Todos os módulos foram fabricados em MDF 18mm com revestimento interno em melaminico branco — durabilidade que vai além da estética.',
     categoria: 'Residencial',
     imagem: '/images/projetos/cozinha-planejada-luxo-ilha-granito-preto-prime-line-bh.jpg',
     altText: 'Cozinha gourmet planejada com ilha em granito preto e armários laqueados — Prime Line Ambientes Planejados, Belo Horizonte',
@@ -25,7 +25,7 @@ export const projetos: Projeto[] = [
   {
     id: 'r2',
     titulo: 'Suíte Master com Ripado de Luxo',
-    descricao: 'Dormitório master planejado com painel ripado, guarda-roupa full-wall do chão ao teto e iluminação embutida em LED âmbar. Cabeceira com nichos integrados para carregadores e leitura.',
+    descricao: 'Os clientes queriam uma suíte master no Belvedere que transmitisse sofisticação sem abrir mão da funcionalidade — um espaço para descansar de verdade, com tudo organizado e acessível. O painel ripado em CNC ocupa toda a parede de cabeceira, com iluminação LED âmbar embutida que cria luz indireta e elimina a necessidade de abajures. O guarda-roupa full-wall do chão ao teto, em MDF lacado com ferragens Grass soft-close, foi planejado com araras duplas, prateleiras ajustáveis, gavetas com amortecimento e nichos para maletas. Os criados-mudos foram integrados ao conjunto principal, com passagem de cabo USB-C embutida para carregamento noturno — um detalhe que faz toda a diferença no cotidiano.',
     categoria: 'Residencial',
     imagem: '/images/projetos/dormitorio-master-planejado-ripado-luxo-belo-horizonte.jpg',
     altText: 'Suíte master planejada com painel ripado e guarda-roupa full-wall iluminado — Prime Line, Belvedere, Belo Horizonte',
@@ -45,7 +45,7 @@ export const projetos: Projeto[] = [
   {
     id: 'r3',
     titulo: 'Sala de Estar com Painel em Mármore',
-    descricao: 'Sala de luxo com painel de TV em mármore Calacatta, ripado iluminado em MDF e lustre de cristal. Nicho central com estantes em vidro e cristaleira integrada ao painel lateral.',
+    descricao: 'Uma sala de 32 m² em Lourdes com pé-direito alto e um pedido claro: criar um painel de TV que fosse o ponto focal do ambiente sem deixar a sala parecer pesada. A solução foi combinar mármore Calacatta na faixa central com ripado iluminado em MDF nas laterais — o contraste entre a frieza do mármore e o calor do LED âmbar criou o equilíbrio perfeito. A cristaleira com portas de vidro temperado foi integrada ao painel lateral, eliminando a necessidade de móvel adicional e mantendo a leitura clean do espaço. O rack flutuante abriga todos os equipamentos com passagem de cabos invisível, e os nichos em vidro com LED embutido servem tanto como decoração quanto como prateleiras funcionais.',
     categoria: 'Residencial',
     imagem: '/images/projetos/sala-luxo-painel-tv-marmore-ripado-lustre-cristal-bh.jpg',
     altText: 'Sala de estar planejada com painel de TV em mármore, ripado iluminado e lustre de cristal — Prime Line, Lourdes, Belo Horizonte',
@@ -65,7 +65,7 @@ export const projetos: Projeto[] = [
   {
     id: 'r4',
     titulo: 'Cozinha Integrada com Pendentes Dourados',
-    descricao: 'Cozinha integrada com ilha em mármore, ripado amadeirado e pendentes dourados — elegância e funcionalidade. Integração total com a sala de jantar, com bancada que serve como mesa de apoio.',
+    descricao: 'O apartamento em Anchieta tinha uma cozinha americana pequena que precisava se integrar visualmente à sala sem criar uma divisão brusca — e ainda assim manter a organização de uma cozinha completa. A island em mármore branco com acabamento leathered resolve o visual e funciona como mesa de apoio para refeições rápidas, com espaço para três banquetas. O ripado amadeirado na parede de fundo aquece o ambiente e equilibra a frieza do mármore, enquanto os pendentes dourados criam continuidade com os puxadores. Os armários superiores em MDF lacado com ferragens Blum garantem silêncio e suavidade de uso, com profundidade reduzida para não criar barreira visual entre os ambientes.',
     categoria: 'Residencial',
     imagem: '/images/projetos/cozinha-integrada-ilha-marmore-ripado-amadeirado-pendentes-dourados-bh.jpg',
     altText: 'Cozinha integrada planejada com ilha em mármore, ripado amadeirado e pendentes dourados — Prime Line, Anchieta, Belo Horizonte',
@@ -85,7 +85,7 @@ export const projetos: Projeto[] = [
   {
     id: 'r5',
     titulo: 'Closet com Portas Deslizantes',
-    descricao: 'Closet planejado em cinza com portas deslizantes ripadas, armários superiores e iluminação interna. Interior organizado com gavetas com divisórias, araras duplas e nichos para calçados.',
+    descricao: 'Um closet de 12 m² no Buritis com um problema clássico: portas de abrir consumiriam espaço demais em um ambiente já compacto. A escolha por portas deslizantes com trilho embutido no teto — sem perfil aparente no piso — resolveu o problema e entregou um visual mais limpo. O ripado nas portas em cinza médio contrasta com o interior branco fosco, que amplia visualmente o ambiente. Por dentro, o projeto priorizou versatilidade: araras duplas reguláveis, gavetas com divisórias removíveis para roupas íntimas, nichos para calçados com iluminação LED branco frio em cada prateleira e armários superiores para itens sazonais com acesso por escada de engate.',
     categoria: 'Residencial',
     imagem: '/images/projetos/closet-guarda-roupa-cinza-deslizante-ripado-armarios-superiores-bh.jpg',
     altText: 'Closet planejado em cinza com portas deslizantes ripadas e iluminação embutida — Prime Line, Buritis, Belo Horizonte',
@@ -105,7 +105,7 @@ export const projetos: Projeto[] = [
   {
     id: 'r6',
     titulo: 'Banheiro em Mármore Branco Total',
-    descricao: 'Banheiro planejado com revestimento em mármore branco, box de vidro temperado, nicho embutido iluminado e torneira preta fosca. Armário espelho com iluminação LED integrada.',
+    descricao: 'O briefing era direto: um banheiro de 8 m² no Sion com aparência de spa de hotel cinco estrelas — materiais nobres, iluminação estudada e zero entulho visual. O revestimento em mármore branco foi aplicado do piso ao teto, inclusive no nicho embutido com LED linear que substitui o porta-shampoo convencional. O armário espelho com iluminação LED integrada foi embutido na parede, sem moldura aparente, criando a sensação de que "sempre esteve ali". A bica preta fosca e os puxadores tone-on-tone completam o projeto sem competir com o mármore — o protagonista do ambiente. MDF hidrófugo foi utilizado em todos os módulos, garantindo resistência à umidade sem sacrificar a estética.',
     categoria: 'Residencial',
     imagem: '/images/projetos/banheiro-luxo-marmore-branco-total-box-vidro-torneira-preta-nicho-bh.jpg',
     altText: 'Banheiro planejado de luxo em mármore branco total com box de vidro e torneira preta — Prime Line, Sion, Belo Horizonte',
@@ -125,7 +125,7 @@ export const projetos: Projeto[] = [
   {
     id: 'r7',
     titulo: 'Quarto Casal com Ripado Iluminado',
-    descricao: 'Dormitório de casal com cabeceira ripada, guarda-roupa branco full-wall e nichos iluminados em LED. Criados-mudos integrados ao guarda-roupa, com espaço para TV e área de leitura.',
+    descricao: 'O casal queria transformar um dormitório padrão de 18 m² nos Jardins em um espaço com identidade própria — sem o visual genérico de loja de departamento. A cabeceira ripada em MDF off-white ocupa toda a parede, com LED âmbar embutido na faixa superior criando halo de luz que dispensa luminária de teto. O guarda-roupa full-wall foi planejado com frentes lisas laqueadas para não competir com o ripado, e inclui penteadeira integrada com espelho bisotado, gavetas com amortecimento e espaço dedicado para TV. Os criados-mudos flutuantes com nichos iluminados completam o conjunto — tudo fabricado em MDF 18mm com acabamento que resiste a arranhões e manchas do cotidiano.',
     categoria: 'Residencial',
     imagem: '/images/projetos/dormitorio-casal-cabeceira-ripado-guarda-roupa-branco-nichos-iluminados-bh.jpg',
     altText: 'Quarto casal planejado com cabeceira ripada e guarda-roupa branco com nichos iluminados — Prime Line, Bairro Jardins, Belo Horizonte',
@@ -145,7 +145,7 @@ export const projetos: Projeto[] = [
   {
     id: 'r8',
     titulo: 'Painel de TV com Ripado e Apliques',
-    descricao: 'Painel de TV planejado com ripado iluminado, apliques embutidos e estantes em vidro — impacto visual garantido. Rack integrado para todos os equipamentos com passagem de cabos invisível.',
+    descricao: 'A sala em Santa Efigênia era funcional mas sem personalidade — o cliente queria um painel de TV que mudasse completamente a leitura do ambiente sem uma reforma estrutural. O ripado amadeirado em CNC ocupa toda a largura da parede, com nichos recuados em diferentes profundidades que criam jogo de sombras naturais durante o dia. À noite, o LED âmbar embutido nos nichos e os apliques direcionais transformam a sala em um ambiente completamente diferente. O rack integrado abriga todos os equipamentos de home theater com passagem de cabos embutida na estrutura — sem fio aparente, sem buracos na parede.',
     categoria: 'Residencial',
     imagem: '/images/projetos/painel-tv-luxo-ripado-iluminado-apliques-estantes-vidro-bh.jpg',
     altText: 'Painel de TV planejado com ripado iluminado, apliques e estantes em vidro — Prime Line, Santa Efigênia, Belo Horizonte',
@@ -166,7 +166,7 @@ export const projetos: Projeto[] = [
   {
     id: 'c1',
     titulo: 'Home Office com Bancada Dupla',
-    descricao: 'Escritório corporativo com bancada amadeirada escura em L, ripado iluminado e setup duplo para alta produtividade. Armários com portas até o teto e passagem de cabos integrada à bancada.',
+    descricao: 'O casal de profissionais liberais precisava de um home office para dois em apenas 14 m² no bairro Funcionários — dois setups independentes, sem que um atrapalhasse o outro durante videoconferências. A bancada em L com amadeirado escuro foi dividida por um painel ripado iluminado que funciona como divisória visual sem fechar o espaço. Cada posição tem passagem de cabos embutida na bancada, com saída USB-C e tomada padrão acessível sem desorganizar a mesa. Os armários até o teto aproveitam toda a altura disponível para armazenar documentos, equipamentos e itens pessoais — tudo planejado para que, ao fechar as portas, o ambiente pareça uma sala de estar.',
     categoria: 'Corporativo',
     imagem: '/images/projetos/escritorio-home-office-bancada-amadeirada-escura-em-l-ripado-setup-duplo-bh.jpg',
     altText: 'Home office corporativo com bancada amadeirada escura em L, ripado iluminado e setup duplo — Prime Line, Funcionários, Belo Horizonte',
@@ -186,7 +186,7 @@ export const projetos: Projeto[] = [
   {
     id: 'c2',
     titulo: 'Escritório com Prateleiras Abertas',
-    descricao: 'Sala executiva com bancada amadeirada, armários off-white e prateleiras abertas — organização e elegância. Ambiente planejado para produtividade, com nicho para videoconferência.',
+    descricao: 'Uma sala executiva no Centro com um desafio de imagem: o cliente recebia clientes frequentemente e precisava que o escritório transmitisse organização, autoridade e sofisticação — tudo ao mesmo tempo. A combinação de bancada amadeirada com armários off-white lacado cria contraste elegante sem ser chamativo. As prateleiras abertas foram posicionadas de forma estratégica na parede de fundo para ficarem visíveis nas videoconferências — livros, plantas e peças selecionadas compõem o backdrop sem serem distração. Um nicho com iluminação dedicada ao fundo serve como ponto focal para chamadas de vídeo. Todo o cabeamento foi embutido na estrutura durante a instalação, sem rasgo na parede.',
     categoria: 'Corporativo',
     imagem: '/images/projetos/home-office-bancada-amadeirada-armarios-off-white-prateleiras-abertas-bh.jpg',
     altText: 'Escritório executivo planejado com bancada amadeirada e armários off-white com prateleiras abertas — Prime Line, Centro, Belo Horizonte',
@@ -206,7 +206,7 @@ export const projetos: Projeto[] = [
   {
     id: 'c3',
     titulo: 'Estação de Trabalho em U',
-    descricao: 'Estação de trabalho em formato U com bancada amadeirada, armários bege superiores e gavetas integradas. Solução para dois profissionais com espaços independentes e organização completa.',
+    descricao: 'Uma startup em Cidade Nova cresceu rápido e precisava transformar uma sala de reuniões em um espaço de trabalho para dois sócios — mantendo a possibilidade de receber clientes. A bancada em U em amadeirado médio oferece superfície generosa para dois profissionais com espaços bem definidos, sem que a mesa pareça uma barricada. Os armários superiores em lacado bege criam fundo neutro que não distrai, enquanto as gavetas full-extension com amortecimento organizam documentos sem ocupar área de trabalho. Quando os monitores estão desligados, o ambiente funciona como sala de reunião para até quatro pessoas sentadas na frente da bancada.',
     categoria: 'Corporativo',
     imagem: '/images/projetos/escritorio-bancada-amadeirada-em-u-armarios-bege-superiores-gavetas-bh.jpg',
     altText: 'Estação de trabalho corporativa em U planejada com bancada amadeirada e armários bege — Prime Line, Cidade Nova, Belo Horizonte',
@@ -226,7 +226,7 @@ export const projetos: Projeto[] = [
   {
     id: 'c4',
     titulo: 'Home Office Full-Wall Amadeirado',
-    descricao: 'Home office planejado em L com móveis amadeirados, ripado iluminado e prateleiras full-wall para máximo aproveitamento. Painel de fundo ideal para videoconferências.',
+    descricao: 'O escritório na Pampulha precisava resolver dois problemas ao mesmo tempo: falta de armazenamento e um fundo pouco profissional para as constantes videoconferências do advogado que ocupa o espaço. O ripado fullwall em amadeirado escuro ocupa toda a parede de fundo, criando profundidade visual e um backdrop que transmite seriedade sem ser corporativo demais. As prateleiras integradas exibem livros jurídicos e peças selecionadas que reforçam a credibilidade profissional nas chamadas. A bancada em L com retorno para documentos em andamento foi projetada com altura regulável em dois pontos, e os armários inferiores fechados guardam processos físicos com fechadura — detalhe essencial para a privacidade dos clientes.',
     categoria: 'Corporativo',
     imagem: '/images/projetos/home-office-planejado-em-l-amadeirado-ripado-fullwall-prateleiras-bh.jpg',
     altText: 'Home office planejado em L amadeirado com ripado iluminado e prateleiras full-wall — Prime Line, Pampulha, Belo Horizonte',
