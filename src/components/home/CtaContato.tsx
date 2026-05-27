@@ -27,7 +27,7 @@ export function CtaContato({ origem = 'home' }: Props) {
             Agende uma visita técnica gratuita e receba um projeto personalizado sem compromisso.
           </p>
           <p className="font-body font-light text-xs text-brand-500 mb-10">
-            Projetos residenciais a partir de R$&nbsp;12.000 · Orçamento detalhado e sem compromisso
+            Projetos residenciais a partir de R$&nbsp;6.000 · Orçamento detalhado e sem compromisso
           </p>
           <a href={url} target="_blank" rel="noopener noreferrer" className="btn-solid inline-flex gap-3">
             {WA_ICON}

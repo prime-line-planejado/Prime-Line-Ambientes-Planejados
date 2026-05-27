@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import { SectionTitle } from '@/components/ui/SectionTitle'
@@ -32,7 +32,7 @@ const faqs = [
   {
     pergunta: 'Qual é o investimento em móveis planejados?',
     resposta:
-      'O investimento varia conforme o ambiente, a metragem e os materiais escolhidos. Projetos residenciais partem de R$ 12.000 para ambientes menores, como dormitórios e home offices, e chegam a valores maiores em projetos completos com cozinha, closet e sala integrada. Oferecemos orçamento detalhado e gratuito após a visita técnica — sem surpresas no valor final.',
+      'O investimento varia conforme o ambiente, a metragem e os materiais escolhidos. Projetos residenciais partem de R$ 6.000 para ambientes menores, como dormitórios e home offices, e chegam a valores maiores em projetos completos com cozinha, closet e sala integrada. Oferecemos orçamento detalhado e gratuito após a visita técnica — sem surpresas no valor final.',
   },
   {
     pergunta: 'Vocês trabalham com financiamento?',

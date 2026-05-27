@@ -89,7 +89,7 @@ const faqJsonLd = {
       name: 'Qual é o investimento em móveis planejados?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'O investimento varia conforme o ambiente, a metragem e os materiais. Projetos residenciais partem de R$ 12.000 para ambientes menores e chegam a valores maiores em projetos completos. Oferecemos orçamento detalhado e gratuito após a visita técnica — sem surpresas no valor final.',
+        text: 'O investimento varia conforme o ambiente, a metragem e os materiais. Projetos residenciais partem de R$ 6.000 para ambientes menores e chegam a valores maiores em projetos completos. Oferecemos orçamento detalhado e gratuito após a visita técnica — sem surpresas no valor final.',
       },
     },
     {
