@@ -165,7 +165,7 @@ export default async function ProjetoPage({ params }: Props) {
                 href={waUrl(projeto.titulo, projeto.local)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary mt-8 inline-flex"
+                className="btn-solid mt-8 inline-flex"
               >
                 Quero um projeto similar
               </a>

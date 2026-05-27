@@ -36,7 +36,9 @@ export function getArtigoPorSlug(slug: string) {
 }
 
 export function getArtigosRelacionados(slugAtual: string, categoria: string, limite = 3) {
-  return getTodosArtigos()
-    .filter((a: any) => a.slug !== slugAtual && a.categoria === categoria)
-    .slice(0, limite)
+  const todos = getTodosArtigos().filter((a: any) => a.slug !== slugAtual)
+  const mesmaCategoria = todos.filter((a: any) => a.categoria === categoria)
+  if (mesmaCategoria.length >= limite) return mesmaCategoria.slice(0, limite)
+  const outros = todos.filter((a: any) => a.categoria !== categoria)
+  return [...mesmaCategoria, ...outros].slice(0, limite)
 }

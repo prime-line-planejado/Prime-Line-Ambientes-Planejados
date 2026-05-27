@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Hero } from '@/components/home/Hero'
 import { Diferenciais } from '@/components/home/Diferenciais'
+import { Numeros } from '@/components/home/Numeros'
 import { PortfolioHome } from '@/components/home/PortfolioHome'
 import { Depoimentos } from '@/components/home/Depoimentos'
 import { BlogPreview } from '@/components/home/BlogPreview'
@@ -244,6 +245,7 @@ export default function Home() {
       />
       <Hero />
       <Diferenciais />
+      <Numeros />
       <PortfolioHome />
       <Depoimentos />
       <BlogPreview />

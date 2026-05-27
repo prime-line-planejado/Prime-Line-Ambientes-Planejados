@@ -50,7 +50,7 @@ export function CookieBanner() {
     <div
       role="dialog"
       aria-label="Consentimento de cookies"
-      className="fixed bottom-0 inset-x-0 z-50 bg-brand-900 border-t border-brand-700 px-6 py-5 md:py-4"
+      className="fixed bottom-0 inset-x-0 z-[200] bg-brand-900 border-t border-brand-700 px-6 py-5 md:py-4 shadow-2xl"
     >
       <div className="container flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
         <p className="font-body font-light text-xs text-brand-300 leading-relaxed flex-1">

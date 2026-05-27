@@ -72,6 +72,7 @@ export default function GaleriaPage() {
           </nav>
 
           <SectionTitle
+            as="h1"
             label="Nossos projetos"
             title="Galeria de Móveis Planejados em BH"
             center

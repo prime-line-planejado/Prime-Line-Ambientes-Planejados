@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { getTodosArtigos } from '@/lib/blog'
 import { FiltroBlog } from '@/components/blog/FiltroBlog'
+import { NewsletterBlog } from '@/components/blog/NewsletterBlog'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 import type { Artigo } from '@/types'
 
@@ -53,7 +54,7 @@ export default function BlogPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <section className="section section--dark">
         <div className="container text-center">
-          <SectionTitle label="Conteúdo e inspiração" title="Blog Prime Line" center light />
+          <SectionTitle as="h1" label="Conteúdo e inspiração" title="Blog Prime Line" center light />
           <p className="font-body font-light text-base text-brand-300 mt-6 max-w-xl mx-auto leading-relaxed">
             Dicas, tendências e inspirações para quem quer transformar seus ambientes com qualidade e estilo.
           </p>
@@ -67,6 +68,7 @@ export default function BlogPage() {
           ) : (
             <FiltroBlog artigos={artigos} />
           )}
+          <NewsletterBlog />
         </div>
       </section>
     </>

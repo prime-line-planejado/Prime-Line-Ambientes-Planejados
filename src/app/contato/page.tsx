@@ -126,7 +126,7 @@ export default function ContatoPage() {
             </ol>
           </nav>
 
-          <SectionTitle label="Fale conosco" title="Orçamento Gratuito de Móveis Planejados em BH" center light />
+          <SectionTitle as="h1" label="Fale conosco" title="Orçamento Gratuito de Móveis Planejados em BH" center light />
           <p className="font-body font-light text-base text-brand-300 mt-6 max-w-xl mx-auto leading-relaxed">
             Visita técnica gratuita, projeto 3D personalizado e orçamento sem compromisso em Belo Horizonte.
           </p>

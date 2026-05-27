@@ -43,7 +43,7 @@ export function Diferenciais() {
   return (
     <section className="section section--cream">
       <div className="container">
-        <div className="mb-16 text-center">
+        <div className="mb-16 text-center" data-animate>
           <SectionTitle label="Por que nos escolher" title="Compromisso com cada detalhe" center />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

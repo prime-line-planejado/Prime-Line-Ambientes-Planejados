@@ -16,6 +16,7 @@ export async function enviarContato(
 ): Promise<ContatoState> {
   const nome     = (formData.get('nome')     as string | null)?.trim()
   const telefone = (formData.get('telefone') as string | null)?.trim()
+  const email    = (formData.get('email')    as string | null)?.trim() ?? ''
   const ambiente = (formData.get('ambiente') as string | null)?.trim()
   const mensagem = (formData.get('mensagem') as string | null)?.trim() ?? ''
 
@@ -27,7 +28,7 @@ export async function enviarContato(
   try {
     await supabaseAdmin.from('leads').insert({
       nome,
-      email: telefone,
+      email: email || telefone,
       origem: `formulario-contato — ${ambiente}`,
     })
   } catch (err) {
@@ -35,7 +36,7 @@ export async function enviarContato(
   }
 
   if (!WEB3FORMS_KEY) {
-    return { status: 'error', message: 'no_key' }
+    return { status: 'error', message: 'no_api_key' }
   }
 
   try {
@@ -48,6 +49,7 @@ export async function enviarContato(
         from_name:   'Prime Line Site',
         name:        nome,
         phone:       telefone,
+        email:       email || '—',
         ambiente,
         message:     mensagem || '—',
         botcheck:    '',

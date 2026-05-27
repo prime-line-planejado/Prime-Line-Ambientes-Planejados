@@ -112,7 +112,7 @@ export function ExitIntent() {
             </p>
             <button
               onClick={() => setOpen(false)}
-              className="mt-6 btn-primary w-full justify-center"
+              className="mt-6 btn-solid w-full justify-center"
             >
               Fechar
             </button>
@@ -150,7 +150,7 @@ export function ExitIntent() {
               <button
                 type="submit"
                 disabled={status === 'sending'}
-                className="btn-primary justify-center mt-1 disabled:opacity-60"
+                className="btn-solid justify-center mt-1 disabled:opacity-60"
               >
                 {status === 'sending' ? 'Enviando…' : 'Quero agendar minha visita gratuita'}
               </button>

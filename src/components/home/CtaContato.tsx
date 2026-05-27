@@ -17,7 +17,7 @@ export function CtaContato({ origem = 'home' }: Props) {
   return (
     <section className="section section--dark">
       <div className="container">
-        <div className="max-w-2xl mx-auto text-center">
+        <div className="max-w-2xl mx-auto text-center" data-animate>
           <p className="label-caps text-gold-light mb-6">Dê o primeiro passo</p>
           <h2 className="font-display font-light text-4xl md:text-6xl text-brand-50 mb-6 leading-tight">
             Transforme seu espaço{' '}<br />

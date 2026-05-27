@@ -33,7 +33,7 @@ export function Depoimentos() {
   return (
     <section className="section section--dark">
       <div className="container">
-        <div className="mb-16 text-center">
+        <div className="mb-16 text-center" data-animate>
           <SectionTitle label="O que dizem nossos clientes" title="Histórias reais" center light />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

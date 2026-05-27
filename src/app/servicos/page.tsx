@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 import { CtaContato } from '@/components/home/CtaContato'
+import { ServicosGrid } from '@/components/servicos/ServicosGrid'
 import { servicosResidenciais, servicosCorporativos, etapasProcesso } from '@/data/servicos'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://primelineplanejados.com.br'
@@ -189,78 +190,14 @@ export default function ServicosPage() {
               <li className="text-brand-400" aria-current="page">Serviços</li>
             </ol>
           </nav>
-          <SectionTitle label="O que fazemos" title="Serviços de Móveis Planejados em BH" center light />
+          <SectionTitle as="h1" label="O que fazemos" title="Serviços de Móveis Planejados em BH" center light />
           <p className="font-body font-light text-base text-brand-300 mt-6 max-w-xl mx-auto leading-relaxed">
             Da cozinha ao escritório — criamos ambientes planejados completos, com projeto exclusivo e materiais de primeira linha.
           </p>
         </div>
       </section>
 
-      {/* Residencial */}
-      <section className="section section--cream">
-        <div className="container">
-          <div className="mb-16">
-            <SectionTitle label="Para o seu lar" title="Residencial" />
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {servicosResidenciais.map(({ id, titulo, descricao, imagem, altText }) => (
-              <div key={id} className="flex flex-col bg-brand-50 border border-brand-200 hover:border-gold-main transition-colors duration-300 overflow-hidden group">
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={imagem}
-                    alt={altText}
-                    fill
-                    sizes="(max-width: 640px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <div className="flex flex-col gap-3 p-8">
-                  <span className="block gold-line" />
-                  <h3 className="label-caps text-brand-900 mt-2">{titulo}</h3>
-                  <p className="font-body font-light text-sm text-brand-600 leading-relaxed">{descricao}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <p className="mt-10 font-body font-light text-sm text-brand-500">
-            Veja projetos residenciais executados no nosso{' '}
-            <Link href="/portfolio" className="text-gold-main hover:text-brand-900 transition-colors">portfólio →</Link>
-          </p>
-        </div>
-      </section>
-
-      {/* Corporativo */}
-      <section className="section bg-brand-50">
-        <div className="container">
-          <div className="mb-16">
-            <SectionTitle label="Para o seu negócio" title="Corporativo" />
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {servicosCorporativos.map(({ id, titulo, descricao, imagem, altText }) => (
-              <div key={id} className="flex flex-col bg-brand-100 border border-brand-200 hover:border-gold-main transition-colors duration-300 overflow-hidden group">
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={imagem}
-                    alt={altText}
-                    fill
-                    sizes="(max-width: 640px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <div className="flex flex-col gap-3 p-8">
-                  <span className="block gold-line" />
-                  <h3 className="label-caps text-brand-900 mt-2">{titulo}</h3>
-                  <p className="font-body font-light text-sm text-brand-600 leading-relaxed">{descricao}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <p className="mt-10 font-body font-light text-sm text-brand-500">
-            Saiba mais sobre materiais no nosso{' '}
-            <Link href="/blog/cozinha-planejada-mdf-ou-mdp" className="text-gold-main hover:text-brand-900 transition-colors">guia de MDF e MDP →</Link>
-          </p>
-        </div>
-      </section>
+      <ServicosGrid />
 
       {/* Processo */}
       <section className="section section--dark">
@@ -268,20 +205,29 @@ export default function ServicosPage() {
           <div className="mb-16 text-center">
             <SectionTitle label="Como trabalhamos" title="Nosso processo" center light />
           </div>
-          <div className="max-w-3xl mx-auto">
-            {etapasProcesso.map(({ numero, titulo, descricao }, i) => (
-              <div key={numero} className="flex gap-8 pb-12 last:pb-0">
-                <div className="flex flex-col items-center">
-                  <div className="w-10 h-10 flex items-center justify-center border border-gold-main text-gold-light font-display font-light text-lg flex-shrink-0">
-                    {numero}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+            {etapasProcesso.map(({ numero, titulo, descricao, imagem, altText }, i) => (
+              <div key={numero} data-animate data-delay={String(Math.min(i + 1, 4)) as '1'|'2'|'3'|'4'} className="flex flex-col border border-brand-800 hover:border-gold-dark transition-colors duration-300">
+                {/* Imagem */}
+                {imagem && (
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <Image
+                      src={imagem}
+                      alt={altText ?? titulo}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    {/* Número sobreposto */}
+                    <div className="absolute top-3 left-3 w-8 h-8 flex items-center justify-center bg-brand-950/80 backdrop-blur-sm border border-gold-main">
+                      <span className="font-display font-light text-sm text-gold-light">{numero}</span>
+                    </div>
                   </div>
-                  {i < etapasProcesso.length - 1 && (
-                    <div className="w-px flex-1 bg-brand-800 mt-3" />
-                  )}
-                </div>
-                <div className="pb-2">
-                  <h3 className="label-caps text-gold-light mb-3">{titulo}</h3>
-                  <p className="font-body font-light text-sm text-brand-300 leading-relaxed">{descricao}</p>
+                )}
+                {/* Texto */}
+                <div className="flex flex-col gap-2 p-5 flex-1">
+                  <h3 className="label-caps text-gold-light">{titulo}</h3>
+                  <p className="font-body font-light text-xs text-brand-400 leading-relaxed">{descricao}</p>
                 </div>
               </div>
             ))}

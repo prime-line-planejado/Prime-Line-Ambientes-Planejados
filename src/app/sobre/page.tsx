@@ -3,6 +3,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 import { CtaContato } from '@/components/home/CtaContato'
+import { ContadorAnimado } from '@/components/ui/ContadorAnimado'
+import { Depoimentos } from '@/components/home/Depoimentos'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://primelineplanejados.com.br'
 
@@ -79,6 +81,28 @@ const breadcrumbJsonLd = {
     { '@type': 'ListItem', position: 2, name: 'Sobre', item: `${siteUrl}/sobre` },
   ],
 }
+
+// Substituir foto (src) e dados quando as fotos reais da equipe estiverem disponíveis
+const equipe = [
+  {
+    nome: 'Carlos Eduardo Mourão',
+    cargo: 'Fundador & Diretor',
+    bio: 'Mais de 15 anos de experiência em marcenaria planejada de alto padrão. Fundou a Prime Line com a missão de transformar ambientes com exclusividade e qualidade.',
+    foto: null as string | null,
+  },
+  {
+    nome: 'Patrícia Drummond',
+    cargo: 'Coordenadora de Projetos',
+    bio: 'Especialista em design de interiores com foco em funcionalidade e estética. Responsável por transformar cada necessidade do cliente em projetos 3D detalhados.',
+    foto: null as string | null,
+  },
+  {
+    nome: 'André Figueiredo',
+    cargo: 'Responsável Técnico',
+    bio: 'Marceneiro master com 12 anos na Prime Line. Garante que cada peça fabricada atenda aos padrões rigorosos de qualidade e precisão milimétrica da empresa.',
+    foto: null as string | null,
+  },
+]
 
 const valores = [
   {
@@ -188,24 +212,115 @@ export default function SobrePage() {
         </div>
       </section>
 
-      {/* Números */}
+      {/* Nossa estrutura — substituir imagens por fotos reais do showroom/fábrica/equipe */}
+      <section className="section section--cream">
+        <div className="container">
+          <div className="mb-16 text-center" data-animate>
+            <SectionTitle label="Onde tudo acontece" title="Nossa estrutura em BH" center />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {([
+              {
+                src: '/images/galeria/cozinha-gourmet-planejada-ilha-cooktop-coifa-teto-inox-bh.jpg',
+                alt: 'Showroom Prime Line — Belo Horizonte, MG',
+                legenda: 'Showroom',
+                desc: 'Rua David Maurílio Mourão, 113 — Palmeiras, BH',
+              },
+              {
+                src: '/images/galeria/guarda-roupa-deslizante-champanhe-interior-branco-nichos-gavetas-bh.jpg',
+                alt: 'Fábrica Prime Line — produção de móveis planejados em Belo Horizonte',
+                legenda: 'Fábrica',
+                desc: 'Produção própria com materiais e ferragens premium',
+              },
+              {
+                src: '/images/galeria/home-office-escritorio-bancada-amadeirada-dupla-armarios-ripado-bh.jpg',
+                alt: 'Equipe Prime Line em ação — montagem de móveis planejados em BH',
+                legenda: 'Equipe em ação',
+                desc: 'Instalação técnica com precisão e zero sujeira',
+              },
+            ] as const).map(({ src, alt, legenda, desc }, i) => (
+              <div key={legenda} data-animate data-delay={String(i + 1) as '1'|'2'|'3'} className="group overflow-hidden">
+                <div className="relative aspect-[4/3] overflow-hidden bg-brand-200">
+                  <Image
+                    src={src}
+                    alt={alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="pt-4 pb-2">
+                  <p className="label-caps text-gold-main mb-1">{legenda}</p>
+                  <p className="font-body font-light text-sm text-brand-600">{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Equipe */}
       <section className="section section--dark">
         <div className="container">
+          <div className="mb-16 text-center">
+            <SectionTitle label="As pessoas por trás dos projetos" title="Nossa equipe" center light />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-12">
+            {equipe.map(({ nome, cargo, bio, foto }) => {
+              const iniciais = nome.split(' ').filter((_, i, a) => i === 0 || i === a.length - 1).map(p => p[0]).join('')
+              return (
+                <div key={nome} className="flex flex-col items-center text-center" data-animate>
+                  {/* Foto ou placeholder */}
+                  <div className="relative w-40 h-48 mb-6 overflow-hidden border border-brand-700 bg-brand-800 flex-shrink-0">
+                    {foto ? (
+                      <Image
+                        src={foto}
+                        alt={`${nome} — ${cargo}, Prime Line Ambientes Planejados`}
+                        fill
+                        sizes="160px"
+                        className="object-cover object-top"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <span className="font-display font-light text-4xl text-brand-600 select-none">{iniciais}</span>
+                      </div>
+                    )}
+                  </div>
+                  <h3 className="font-display font-light text-xl text-brand-50 mb-1">{nome}</h3>
+                  <p className="label-caps text-gold-main mb-4">{cargo}</p>
+                  <p className="font-body font-light text-sm text-brand-400 leading-relaxed max-w-xs">{bio}</p>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Números */}
+      <section className="section section--dark border-t border-brand-800">
+        <div className="container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[
-              { numero: '500+', label: 'Projetos entregues' },
-              { numero: '12', label: 'Anos de experiência' },
-              { numero: '98%', label: 'Clientes satisfeitos' },
-              { numero: 'BH', label: 'e região metropolitana' },
-            ].map(({ numero, label }) => (
-              <div key={label}>
-                <p className="font-display font-light text-5xl text-gold-light mb-3">{numero}</p>
+            {([
+              { valor: 500,  sufixo: '+',  texto: null, label: 'Projetos entregues'     },
+              { valor: 12,   sufixo: '',   texto: null, label: 'Anos de experiência'    },
+              { valor: 98,   sufixo: '%',  texto: null, label: 'Clientes satisfeitos'   },
+              { valor: null, sufixo: '',   texto: 'BH', label: 'e região metropolitana' },
+            ] as const).map(({ valor, sufixo, texto, label }, i) => (
+              <div key={label} data-animate data-delay={String(Math.min(i + 1, 4)) as '1'|'2'|'3'|'4'}>
+                <p className="font-display font-light text-5xl text-gold-light mb-3">
+                  {valor !== null
+                    ? <ContadorAnimado valor={valor} sufixo={sufixo} />
+                    : texto
+                  }
+                </p>
                 <p className="label-caps text-brand-400">{label}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      <Depoimentos />
 
       <CtaContato origem="contato" />
     </>

@@ -9,7 +9,7 @@ export function PortfolioHome() {
   return (
     <section className="section bg-brand-50">
       <div className="container">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16" data-animate>
           <SectionTitle label="Nosso trabalho" title="Portfólio de Projetos" />
           <Link href="/portfolio" className="btn-outline self-start md:self-auto">
             Ver todos os projetos

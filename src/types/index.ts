@@ -51,4 +51,6 @@ export interface EtapaProcesso {
   numero: string
   titulo: string
   descricao: string
+  imagem?: string
+  altText?: string
 }

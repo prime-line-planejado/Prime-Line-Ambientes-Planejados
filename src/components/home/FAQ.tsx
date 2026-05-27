@@ -52,10 +52,10 @@ export function FAQ() {
   return (
     <section className="section section--cream">
       <div className="container">
-        <div className="mb-16 text-center">
+        <div className="mb-16 text-center" data-animate>
           <SectionTitle label="Tire suas dúvidas" title="Perguntas Frequentes" center />
         </div>
-        <div className="max-w-3xl mx-auto divide-y divide-brand-200">
+        <div className="max-w-3xl mx-auto divide-y divide-brand-200" data-animate data-delay="1">
           {faqs.map((faq, i) => (
             <div key={i}>
               <button

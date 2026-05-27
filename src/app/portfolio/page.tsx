@@ -49,7 +49,7 @@ const itemListJsonLd = {
       '@type': 'CreativeWork',
       name: p.titulo,
       description: p.descricao,
-      image: p.imagem,
+      image: `${siteUrl}${p.imagem}`,
       locationCreated: {
         '@type': 'Place',
         name: p.local ?? 'Belo Horizonte, MG',
@@ -94,6 +94,7 @@ export default function PortfolioPage() {
           </nav>
 
           <SectionTitle
+            as="h1"
             label="Nosso trabalho"
             title="Portfólio de Móveis Planejados em BH"
             center

@@ -8,6 +8,7 @@ import { ArtigosRelacionados } from '@/components/blog/ArtigosRelacionados'
 import { CompartilharArtigo } from '@/components/blog/CompartilharArtigo'
 import { TocArtigo } from '@/components/blog/TocArtigo'
 import { AutorArtigo } from '@/components/blog/AutorArtigo'
+import { NewsletterBlog } from '@/components/blog/NewsletterBlog'
 import { extractHeadings } from '@/lib/utils'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://primelineplanejados.com.br'
@@ -83,9 +84,14 @@ export default async function BlogArtigoPage({ params }: Props) {
     datePublished: artigo.date,
     dateModified: artigo.updatedAt ?? artigo.date,
     author: {
-      '@type': 'Organization',
-      name: artigo.autor ?? 'Prime Line Ambientes Planejados',
-      url: siteUrl,
+      '@type': 'Person',
+      name: artigo.autor ?? 'Guilherme Souza',
+      jobTitle: 'SEO Marketing & Comunicação',
+      worksFor: {
+        '@type': 'Organization',
+        name: 'Prime Line Ambientes Planejados',
+        url: siteUrl,
+      },
     },
     publisher: {
       '@type': 'Organization',
@@ -101,7 +107,7 @@ export default async function BlogArtigoPage({ params }: Props) {
       '@id': `${siteUrl}/blog/${slug}`,
     },
     wordCount,
-    ...(artigo.imagem ? { image: { '@type': 'ImageObject', url: artigo.imagem, width: 1200, height: 630 } } : {}),
+    ...(artigo.imagem ? { image: { '@type': 'ImageObject', url: `${siteUrl}${artigo.imagem}`, width: 1200, height: 630 } } : {}),
     ...(artigo.tags?.length ? { keywords: artigo.tags.join(', ') } : {}),
   }
 
@@ -133,6 +139,7 @@ export default async function BlogArtigoPage({ params }: Props) {
           <TocArtigo headings={headings} />
           <CtaBlogWhatsApp variant="mid" tituloArtigo={artigo.title} />
           <ConteudoMDX source={artigo.content} />
+          <NewsletterBlog />
           <AutorArtigo autor={artigo.autor} />
           <CompartilharArtigo title={artigo.title} />
         </div>
