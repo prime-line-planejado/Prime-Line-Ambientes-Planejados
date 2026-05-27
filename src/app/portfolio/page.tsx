@@ -1,21 +1,23 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { FiltroPortfolio } from '@/components/portfolio/FiltroPortfolio'
+import { GaleriaGrid } from '@/components/galeria/GaleriaGrid'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 import { CtaContato } from '@/components/home/CtaContato'
 import { projetos } from '@/data/projetos'
+import { galeria } from '@/data/galeria'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://primelineplanejados.com.br'
 
 export const metadata: Metadata = {
-  title: 'Portfólio de Móveis Planejados em Belo Horizonte | Cozinhas, Closets e Corporativo',
+  title: 'Portfólio e Galeria | Móveis Planejados em BH — Prime Line',
   description:
-    'Veja projetos executados de móveis planejados residenciais e corporativos em Belo Horizonte. Cozinhas, closets, suítes, home offices, escritórios e recepções sob medida.',
+    'Veja projetos completos e galeria com mais de 80 fotos de móveis planejados em Belo Horizonte. Cozinhas, closets, dormitórios, home offices e ambientes corporativos sob medida.',
   alternates: { canonical: '/portfolio' },
   openGraph: {
     title: 'Portfólio de Móveis Planejados em BH | Prime Line Ambientes Planejados',
     description:
-      'Projetos exclusivos de marcenaria planejada de alto padrão em Belo Horizonte. Cozinhas, closets, ambientes corporativos e muito mais — cada ambiente sob medida.',
+      'Projetos exclusivos de marcenaria planejada de alto padrão em Belo Horizonte. Cozinhas, closets, ambientes corporativos e galeria completa com mais de 80 fotos.',
     type: 'website',
     url: `${siteUrl}/portfolio`,
     locale: 'pt_BR',
@@ -31,8 +33,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Portfólio de Móveis Planejados em BH | Prime Line',
-    description: 'Projetos executados de marcenaria planejada de alto padrão em Belo Horizonte.',
+    title: 'Portfólio e Galeria | Prime Line BH',
+    description: 'Projetos executados e galeria de móveis planejados de alto padrão em Belo Horizonte.',
     images: [`${siteUrl}/images/raw/hero-bg.jpg`],
   },
 }
@@ -63,6 +65,20 @@ const itemListJsonLd = {
   })),
 }
 
+const imageGalleryJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ImageGallery',
+  name: 'Galeria de Projetos — Prime Line Ambientes Planejados',
+  description: 'Galeria de projetos reais de móveis planejados em Belo Horizonte.',
+  url: `${siteUrl}/portfolio`,
+  numberOfItems: galeria.length,
+  author: {
+    '@type': 'HomeAndConstructionBusiness',
+    name: 'Prime Line Ambientes Planejados',
+    url: siteUrl,
+  },
+}
+
 const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -72,10 +88,18 @@ const breadcrumbJsonLd = {
   ],
 }
 
-export default function PortfolioPage() {
+export default async function PortfolioPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ aba?: string }>
+}) {
+  const { aba } = await searchParams
+  const abaAtiva = aba === 'galeria' ? 'galeria' : 'projetos'
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(imageGalleryJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
 
       {/* Header da página */}
@@ -101,15 +125,47 @@ export default function PortfolioPage() {
             light
           />
           <p className="font-body font-light text-base text-brand-300 mt-6 max-w-xl mx-auto leading-relaxed">
-            Cada projeto é único — desenvolvido sob medida para o espaço e estilo de vida de cada cliente em Belo Horizonte.
+            {projetos.length} projetos completos e {galeria.length} fotos — cada ambiente desenvolvido sob medida em Belo Horizonte.
           </p>
         </div>
       </section>
 
-      {/* Grid com filtro */}
+      {/* Abas + conteúdo */}
       <section className="section bg-brand-50">
         <div className="container">
-          <FiltroPortfolio />
+
+          {/* Tab nav */}
+          <div className="flex gap-0 mb-12 border-b border-brand-200">
+            <Link
+              href="/portfolio"
+              className={`px-6 py-3 font-body text-sm transition-colors duration-200 border-b-2 -mb-px ${
+                abaAtiva === 'projetos'
+                  ? 'border-gold-main text-brand-900 font-semibold'
+                  : 'border-transparent text-brand-500 hover:text-brand-800'
+              }`}
+            >
+              Projetos
+              <span className={`ml-2 font-body font-light text-xs ${abaAtiva === 'projetos' ? 'text-brand-500' : 'text-brand-400'}`}>
+                ({projetos.length})
+              </span>
+            </Link>
+            <Link
+              href="/portfolio?aba=galeria"
+              className={`px-6 py-3 font-body text-sm transition-colors duration-200 border-b-2 -mb-px ${
+                abaAtiva === 'galeria'
+                  ? 'border-gold-main text-brand-900 font-semibold'
+                  : 'border-transparent text-brand-500 hover:text-brand-800'
+              }`}
+            >
+              Galeria de Fotos
+              <span className={`ml-2 font-body font-light text-xs ${abaAtiva === 'galeria' ? 'text-brand-500' : 'text-brand-400'}`}>
+                ({galeria.length})
+              </span>
+            </Link>
+          </div>
+
+          {abaAtiva === 'projetos' ? <FiltroPortfolio /> : <GaleriaGrid />}
+
         </div>
       </section>
 

@@ -50,15 +50,15 @@ export function ServicosGrid() {
 
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {itens.map(({ id, titulo, descricao, imagem, altText }) => (
+          {itens.map((item) => (
             <div
-              key={id}
+              key={item.id}
               className="flex flex-col bg-brand-50 border border-brand-200 hover:border-gold-main transition-colors duration-300 overflow-hidden group"
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
-                  src={imagem}
-                  alt={altText}
+                  src={item.imagem}
+                  alt={item.altText}
                   fill
                   sizes="(max-width: 640px) 100vw, 50vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -66,8 +66,16 @@ export function ServicosGrid() {
               </div>
               <div className="flex flex-col gap-3 p-8">
                 <span className="block gold-line" />
-                <h3 className="label-caps text-brand-900 mt-2">{titulo}</h3>
-                <p className="font-body font-light text-sm text-brand-600 leading-relaxed">{descricao}</p>
+                <h3 className="label-caps text-brand-900 mt-2">{item.titulo}</h3>
+                <p className="font-body font-light text-sm text-brand-600 leading-relaxed">{item.descricao}</p>
+                {'href' in item && item.href && (
+                  <Link
+                    href={item.href}
+                    className="mt-1 font-body text-xs text-gold-main hover:text-brand-900 transition-colors self-start"
+                  >
+                    Saiba mais →
+                  </Link>
+                )}
               </div>
             </div>
           ))}

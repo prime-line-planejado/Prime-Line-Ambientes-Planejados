@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -10,7 +10,6 @@ const WA_URL = waUrl('flutuante')
 
 const navLinks = [
   { label: 'Portfólio',  href: '/portfolio' },
-  { label: 'Galeria',    href: '/galeria'   },
   { label: 'Serviços',   href: '/servicos'  },
   { label: 'Sobre',      href: '/sobre'     },
   { label: 'Blog',       href: '/blog'      },
@@ -19,10 +18,17 @@ const navLinks = [
 
 export function Header() {
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
-    <header className="fixed top-0 inset-x-0 z-50 bg-brand-50 border-b border-brand-200">
+    <header className={`fixed top-0 inset-x-0 z-50 bg-brand-50 border-b border-brand-200 transition-shadow duration-300 ${scrolled ? 'shadow-md' : ''}`}>
       <div className="container flex items-center justify-between h-16 px-6">
 
         {/* Logo */}

@@ -5,6 +5,7 @@ export const servicosResidenciais = [
     descricao: 'Projetos sob medida com aproveitamento máximo de espaço, acabamentos premium e funcionalidade diária.',
     imagem: '/images/galeria/cozinha-gourmet-planejada-ilha-cooktop-coifa-teto-inox-bh.jpg',
     altText: 'Cozinha gourmet planejada com ilha, cooktop e coifa em inox — Prime Line BH',
+    href: '/servicos/cozinha-planejada-belo-horizonte',
   },
   {
     id: 'sr2',
@@ -12,6 +13,7 @@ export const servicosResidenciais = [
     descricao: 'Dormitórios completos com cabeceiras, criados-mudos embutidos e closets iluminados.',
     imagem: '/images/galeria/dormitorio-casal-luxo-cabeceira-acolchoada-guarda-roupa-fullwall-bege-led-bh.jpg',
     altText: 'Dormitório de casal com guarda-roupa full-wall bege e iluminação LED — Prime Line BH',
+    href: '/servicos/quarto-planejado-belo-horizonte',
   },
   {
     id: 'sr3',
@@ -19,6 +21,7 @@ export const servicosResidenciais = [
     descricao: 'Painéis de TV, estantes, escritórios integrados e ambientes de convivência planejados.',
     imagem: '/images/galeria/sala-painel-tv-luxo-ripado-champanhe-branco-lacado-cristaleira-preta-led-bh.jpg',
     altText: 'Sala planejada com painel TV ripado champanhe, cristaleira preta e LED — Prime Line BH',
+    href: '/servicos/sala-planejada-belo-horizonte',
   },
   {
     id: 'sr4',
@@ -26,6 +29,7 @@ export const servicosResidenciais = [
     descricao: 'Gabinetes e nichos planejados com materiais resistentes à umidade e acabamento refinado.',
     imagem: '/images/projetos/banheiro-luxo-marmore-branco-total-box-vidro-torneira-preta-nicho-bh.jpg',
     altText: 'Banheiro planejado em mármore branco com box de vidro e torneira preta — Prime Line BH',
+    href: '/servicos/banheiro-planejado-belo-horizonte',
   },
 ]
 
