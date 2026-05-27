@@ -20,7 +20,7 @@ export function CtaContato({ origem = 'home' }: Props) {
         <div className="max-w-2xl mx-auto text-center">
           <p className="label-caps text-gold-light mb-6">Dê o primeiro passo</p>
           <h2 className="font-display font-light text-4xl md:text-6xl text-brand-50 mb-6 leading-tight">
-            Transforme seu espaço<br />
+            Transforme seu espaço{' '}<br />
             <em className="text-gold-light not-italic">com quem entende de beleza</em>
           </h2>
           <p className="font-body font-light text-base text-brand-300 mb-4 leading-relaxed">
