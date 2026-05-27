@@ -1,7 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { waUrl, PHONE_DISPLAY } from '@/lib/whatsapp'
 
-const WA_URL = 'https://wa.me/5531998156666?text=Ol%C3%A1!%20Vi%20o%20trabalho%20de%20voc%C3%AAs%20%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.%20Pode%20me%20contar%20como%20funciona%20o%20processo%3F'
+const WA_URL = waUrl('flutuante')
 
 const email     = process.env.NEXT_PUBLIC_EMAIL     ?? 'contato@primelineplanejados.com.br'
 const instagram = process.env.NEXT_PUBLIC_INSTAGRAM ?? '@primeline_planejados'
@@ -48,7 +49,7 @@ export function Footer() {
           <ul className="space-y-3 font-body font-light text-sm text-brand-300">
             <li>
               <a href={WA_URL} target="_blank" rel="noopener noreferrer" className="hover:text-gold-light transition-colors">
-                +55 (31) 99815-6666
+                {PHONE_DISPLAY}
               </a>
             </li>
             <li>

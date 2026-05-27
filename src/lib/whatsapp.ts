@@ -1,4 +1,5 @@
 const NUMERO = '5531998156666'
+export const PHONE_DISPLAY = '+55 (31) 9 9815-6666'
 
 export function waUrl(origem: 'home' | 'servicos' | 'portfolio' | 'blog' | 'contato' | 'flutuante', contexto?: string): string {
   const mensagens: Record<string, string> = {
