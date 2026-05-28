@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next'
 import { getTodosArtigos } from '@/lib/blog'
 import { projetos } from '@/data/projetos'
 import { servicosPaginas } from '@/data/servicosPaginas'
+import { bairros } from '@/data/bairros'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://primelineplanejados.com.br'
 
@@ -38,5 +39,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }))
 
-  return [...pages, ...servicosMap, ...projetosMap, ...artigosMap]
+  const bairrosIndexMap: MetadataRoute.Sitemap = [
+    { url: `${siteUrl}/bairros`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+  ]
+
+  const bairrosMap: MetadataRoute.Sitemap = bairros.map(b => ({
+    url: `${siteUrl}/bairros/${b.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.65,
+  }))
+
+  return [...pages, ...servicosMap, ...projetosMap, ...artigosMap, ...bairrosIndexMap, ...bairrosMap]
 }
