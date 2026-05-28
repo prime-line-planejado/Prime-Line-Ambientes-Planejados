@@ -140,10 +140,10 @@ const jsonLd = {
     latitude: -19.9543,
     longitude: -43.9777,
   },
-  hasMap: 'https://www.google.com/maps/place/Prime+Line+Ambientes+Planejados/@-19.9543,-43.9777,17z',
+  hasMap: 'https://www.google.com/maps/place/Prime+Line+Ambientes+Planejados/data=!4m2!3m1!1s0x0:0x15e7086bbff5046b',
   sameAs: [
     'https://www.instagram.com/primeline_planejados',
-    'https://www.google.com/maps/place/Prime+Line+Ambientes+Planejados/@-19.9543,-43.9777,17z',
+    'https://www.google.com/maps/place/Prime+Line+Ambientes+Planejados/data=!4m2!3m1!1s0x0:0x15e7086bbff5046b',
     'https://primelineplanejados.com.br',
   ],
   openingHoursSpecification: [
