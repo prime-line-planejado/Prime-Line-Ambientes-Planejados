@@ -1,9 +1,10 @@
 'use server'
 
 import { supabaseAdmin } from '@/lib/supabase-server'
+import { WA_NUMBER } from '@/lib/whatsapp'
 
 const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? ''
-const WA_FALLBACK   = 'https://wa.me/5531998156666?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento.'
+const WA_FALLBACK   = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Olá, vim pelo site e gostaria de um orçamento.')}`
 
 export type ContatoState =
   | { status: 'idle' }

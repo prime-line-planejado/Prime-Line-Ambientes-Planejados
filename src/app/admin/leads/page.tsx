@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { supabaseAdmin } from '@/lib/supabase-server'
+import { WA_NUMBER } from '@/lib/whatsapp'
 
 export const metadata: Metadata = {
   title: 'Leads — Admin Prime Line',
@@ -90,7 +91,7 @@ export default async function AdminLeadsPage({ searchParams }: Props) {
               </thead>
               <tbody>
                 {(leads as Lead[]).map((lead, i) => {
-                  const waUrl = `https://wa.me/5531998156666?text=${encodeURIComponent(`Olá ${lead.nome}, tudo bem? Vi que você se cadastrou no site da Prime Line Ambientes Planejados. Posso te ajudar a agendar uma visita técnica gratuita?`)}`
+                  const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(`Olá ${lead.nome}, tudo bem? Vi que você se cadastrou no site da Prime Line Ambientes Planejados. Posso te ajudar a agendar uma visita técnica gratuita?`)}`
                   return (
                     <tr
                       key={lead.id}

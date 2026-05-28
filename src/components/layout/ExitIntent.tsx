@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import { WA_NUMBER } from '@/lib/whatsapp'
 
 const STORAGE_KEY = 'pl_exit_intent_shown'
 const DELAY_MS = 20_000
@@ -160,7 +161,7 @@ export function ExitIntent() {
               <p className="mt-3 font-body text-xs text-red-400 text-center">
                 Erro ao enviar. Tente pelo{' '}
                 <a
-                  href="https://wa.me/5531998156666"
+                  href={`https://wa.me/${WA_NUMBER}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="underline text-gold-dark"

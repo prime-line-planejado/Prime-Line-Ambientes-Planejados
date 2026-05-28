@@ -68,9 +68,9 @@ export function ServicosGrid() {
                 <span className="block gold-line" />
                 <h3 className="label-caps text-brand-900 mt-2">{item.titulo}</h3>
                 <p className="font-body font-light text-sm text-brand-600 leading-relaxed">{item.descricao}</p>
-                {'href' in item && item.href && (
+                {'href' in item && typeof item.href === 'string' && item.href && (
                   <Link
-                    href={item.href}
+                    href={item.href as string}
                     className="mt-1 font-body text-xs text-gold-main hover:text-brand-900 transition-colors self-start"
                   >
                     Saiba mais →
