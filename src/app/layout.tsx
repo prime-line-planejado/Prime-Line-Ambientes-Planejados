@@ -67,7 +67,7 @@ export const metadata: Metadata = {
   themeColor: '#1a1a18',
   robots: { index: true, follow: true },
   verification: {
-    google: 'Yy69jnreQoNpxEWlNEFoRFZqCWoqSHjsxOozdJdVU5w',
+    google: '-vKokK17y6OcYWPPyW4a9UqxR51fFOOGqCxytmhhXpg',
   },
 }
 
