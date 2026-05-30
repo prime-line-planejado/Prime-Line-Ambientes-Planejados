@@ -5,8 +5,10 @@ import readingTime from 'reading-time'
 
 const BLOG_DIR = path.join(process.cwd(), 'src/content/blog')
 
-export function getTodosArtigos() {
+export function getTodosArtigos({ incluirFuturos = false } = {}) {
   if (!fs.existsSync(BLOG_DIR)) return []
+  const hoje = new Date()
+  hoje.setHours(23, 59, 59, 999)
   const arquivos = fs.readdirSync(BLOG_DIR)
   return arquivos
     .filter(f => f.endsWith('.mdx'))
@@ -19,6 +21,7 @@ export function getTodosArtigos() {
         tempoLeitura: (data.tempoLeitura as string) ?? readingTime(content).text,
       }
     })
+    .filter((a: any) => incluirFuturos || new Date(a.date) <= hoje)
     .sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }
 

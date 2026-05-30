@@ -5,6 +5,8 @@ import { NewsletterBlog } from '@/components/blog/NewsletterBlog'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 import type { Artigo } from '@/types'
 
+export const revalidate = 3600
+
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://primelineplanejados.com.br'
 
 export const metadata: Metadata = {
