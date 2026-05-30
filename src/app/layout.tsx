@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Cormorant_Garamond, Montserrat } from 'next/font/google'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
@@ -24,6 +24,10 @@ const montserrat = Montserrat({
 })
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://primelineplanejados.com.br'
+
+export const viewport: Viewport = {
+  themeColor: '#1a1a18',
+}
 
 export const metadata: Metadata = {
   title: {
@@ -64,7 +68,6 @@ export const metadata: Metadata = {
     apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
     shortcut: '/favicon.ico',
   },
-  themeColor: '#1a1a18',
   robots: { index: true, follow: true },
   verification: {
     google: '-vKokK17y6OcYWPPyW4a9UqxR51fFOOGqCxytmhhXpg',

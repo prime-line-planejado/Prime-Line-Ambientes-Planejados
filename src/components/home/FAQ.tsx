@@ -35,9 +35,9 @@ const faqs = [
       'O investimento varia conforme o ambiente, a metragem e os materiais escolhidos. Projetos residenciais partem de R$ 6.000 para ambientes menores, como dormitórios e home offices, e chegam a valores maiores em projetos completos com cozinha, closet e sala integrada. Oferecemos orçamento detalhado e gratuito após a visita técnica — sem surpresas no valor final.',
   },
   {
-    pergunta: 'Vocês trabalham com financiamento?',
+    pergunta: 'Vocês parcelam? Quais são as formas de pagamento?',
     resposta:
-      'Sim, oferecemos condições de parcelamento. Entre em contato pelo WhatsApp para conhecer as opções disponíveis e encontrar a que melhor se encaixa no seu planejamento.',
+      'Sim! Parcelamos em até 18x no cartão de crédito. Também trabalhamos com outras condições de pagamento — consulte nossa equipe pelo WhatsApp para conhecer todas as opções disponíveis e encontrar a que melhor se encaixa no seu planejamento.',
   },
   {
     pergunta: 'Quais materiais vocês utilizam na fabricação dos móveis?',

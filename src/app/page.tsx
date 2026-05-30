@@ -94,10 +94,10 @@ const faqJsonLd = {
     },
     {
       '@type': 'Question',
-      name: 'Vocês trabalham com financiamento?',
+      name: 'Vocês parcelam? Quais são as formas de pagamento?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Sim, oferecemos condições de parcelamento. Entre em contato pelo WhatsApp para conhecer as opções disponíveis.',
+        text: 'Sim! Parcelamos em até 18x no cartão de crédito. Também trabalhamos com outras condições de pagamento — consulte nossa equipe pelo WhatsApp para conhecer todas as opções disponíveis.',
       },
     },
     {
