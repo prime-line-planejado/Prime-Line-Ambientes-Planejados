@@ -1,6 +1,6 @@
 'use client'
 
-import { useActionState } from 'react'
+import { useActionState, useEffect } from 'react'
 import { enviarContato, type ContatoState } from '@/app/actions/contato'
 import { waUrl } from '@/lib/whatsapp'
 
@@ -18,6 +18,14 @@ const initial: ContatoState = { status: 'idle' }
 
 export function FormularioContato() {
   const [state, action, pending] = useActionState(enviarContato, initial)
+
+  // Conversão: dispara o evento Lead no Meta Pixel quando o orçamento é enviado.
+  useEffect(() => {
+    if (state.status === 'ok') {
+      ;(window as any).fbq?.('track', 'Lead', { content_name: 'Formulário de Orçamento' })
+      ;(window as any).gtag?.('event', 'generate_lead')
+    }
+  }, [state.status])
 
   if (state.status === 'ok') {
     return (

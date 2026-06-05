@@ -4,6 +4,7 @@ import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { WhatsAppButton } from '@/components/layout/WhatsAppButton'
 import { CookieBanner } from '@/components/layout/CookieBanner'
+import { MetaPixelEvents } from '@/components/layout/MetaPixelEvents'
 import { ExitIntent } from '@/components/layout/ExitIntent'
 import { ScrollAnimations } from '@/components/ui/ScrollAnimations'
 import './globals.css'
@@ -84,6 +85,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <WhatsAppButton />
         <CookieBanner />
+        <MetaPixelEvents />
         <ExitIntent />
       </body>
     </html>

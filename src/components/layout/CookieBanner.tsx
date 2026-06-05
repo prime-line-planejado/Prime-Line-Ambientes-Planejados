@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 
 const CONSENT_KEY = 'pl_cookie_consent'
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID
+const PIXEL_ID = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID
 
 function injectGA() {
   if (!GA_ID || document.getElementById('ga4-script')) return
@@ -21,6 +22,25 @@ function injectGA() {
   gtag('config', GA_ID, { page_path: window.location.pathname })
 }
 
+// Meta (Facebook) Pixel — carregado só após consentimento (LGPD).
+function injectPixel() {
+  if (!PIXEL_ID || (window as any).fbq) return
+  /* eslint-disable */
+  ;(function (f: any, b, e, v, n?: any, t?: any, s?: any) {
+    if (f.fbq) return
+    n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments) }
+    if (!f._fbq) f._fbq = n
+    n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []
+    t = b.createElement(e); t.async = !0; t.src = v
+    s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)
+  })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js')
+  /* eslint-enable */
+  ;(window as any).fbq('init', PIXEL_ID)
+  ;(window as any).fbq('track', 'PageView')
+}
+
+function injectTrackers() { injectGA(); injectPixel() }
+
 export function CookieBanner() {
   const [visible, setVisible] = useState(false)
 
@@ -29,13 +49,13 @@ export function CookieBanner() {
     if (!consent) {
       setVisible(true)
     } else if (consent === 'accepted') {
-      injectGA()
+      injectTrackers()
     }
   }, [])
 
   function accept() {
     localStorage.setItem(CONSENT_KEY, 'accepted')
-    injectGA()
+    injectTrackers()
     setVisible(false)
   }
 
@@ -57,7 +77,7 @@ export function CookieBanner() {
           Usamos cookies para analisar o tráfego do site e melhorar sua experiência, em conformidade com a{' '}
           <strong className="font-normal text-brand-200">LGPD</strong>.
           Ao clicar em <em className="not-italic font-normal text-brand-200">"Aceitar"</em>, você
-          concorda com o uso de cookies analíticos (Google Analytics).
+          concorda com o uso de cookies analíticos e de publicidade (Google Analytics e Meta Pixel).
         </p>
         <div className="flex gap-3 flex-shrink-0">
           <button
