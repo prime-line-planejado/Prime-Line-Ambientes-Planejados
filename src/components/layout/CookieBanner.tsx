@@ -4,7 +4,9 @@ import { useState, useEffect } from 'react'
 
 const CONSENT_KEY = 'pl_cookie_consent'
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID
-const PIXEL_ID = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID
+// Pixel ID é público (aparece em toda requisição do site) — hardcode com fallback
+// pro env, pra funcionar em qualquer projeto Vercel que buildar o repo.
+const PIXEL_ID = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID || '3194399230742680'
 
 function injectGA() {
   if (!GA_ID || document.getElementById('ga4-script')) return
