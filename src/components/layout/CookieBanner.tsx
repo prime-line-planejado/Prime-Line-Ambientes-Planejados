@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 const CONSENT_KEY = 'pl_cookie_consent'
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID
@@ -24,7 +24,7 @@ function injectGA() {
   gtag('config', GA_ID, { page_path: window.location.pathname })
 }
 
-// Meta (Facebook) Pixel — carregado só após consentimento (LGPD).
+// Meta (Facebook) Pixel — carregado após consentimento (explícito ou por navegação).
 function injectPixel() {
   if (!PIXEL_ID || (window as any).fbq) return
   /* eslint-disable */
@@ -45,23 +45,46 @@ function injectTrackers() { injectGA(); injectPixel() }
 
 export function CookieBanner() {
   const [visible, setVisible] = useState(false)
+  const bannerRef = useRef<HTMLDivElement>(null)
+  const decidedRef = useRef(false)
 
   useEffect(() => {
     const consent = localStorage.getItem(CONSENT_KEY)
-    if (!consent) {
-      setVisible(true)
-    } else if (consent === 'accepted') {
+    if (consent === 'accepted') { injectTrackers(); return }
+    if (consent === 'rejected') return
+
+    // Sem decisão ainda: mostra o aviso e trata "continuar navegando"
+    // (rolar a página ou clicar em qualquer lugar fora do banner) como consentimento.
+    setVisible(true)
+
+    const grantImplied = (e: Event) => {
+      if (decidedRef.current) return
+      // Cliques dentro do banner (Aceitar/Recusar) têm handler próprio — ignora aqui.
+      if (e.type === 'click' && bannerRef.current && e.target instanceof Node && bannerRef.current.contains(e.target)) return
+      decidedRef.current = true
+      localStorage.setItem(CONSENT_KEY, 'accepted')
       injectTrackers()
+      setVisible(false)
+      cleanup()
     }
+    function cleanup() {
+      window.removeEventListener('scroll', grantImplied, true)
+      window.removeEventListener('click', grantImplied, true)
+    }
+    window.addEventListener('scroll', grantImplied, { capture: true, passive: true })
+    window.addEventListener('click', grantImplied, true)
+    return cleanup
   }, [])
 
   function accept() {
+    decidedRef.current = true
     localStorage.setItem(CONSENT_KEY, 'accepted')
     injectTrackers()
     setVisible(false)
   }
 
   function reject() {
+    decidedRef.current = true
     localStorage.setItem(CONSENT_KEY, 'rejected')
     setVisible(false)
   }
@@ -70,6 +93,7 @@ export function CookieBanner() {
 
   return (
     <div
+      ref={bannerRef}
       role="dialog"
       aria-label="Consentimento de cookies"
       className="fixed bottom-0 inset-x-0 z-[200] bg-brand-900 border-t border-brand-700 px-6 py-5 md:py-4 shadow-2xl"
@@ -78,15 +102,15 @@ export function CookieBanner() {
         <p className="font-body font-light text-xs text-brand-300 leading-relaxed flex-1">
           Usamos cookies para analisar o tráfego do site e melhorar sua experiência, em conformidade com a{' '}
           <strong className="font-normal text-brand-200">LGPD</strong>.
-          Ao clicar em <em className="not-italic font-normal text-brand-200">"Aceitar"</em>, você
-          concorda com o uso de cookies analíticos e de publicidade (Google Analytics e Meta Pixel).
+          Ao continuar navegando, você concorda com o uso de cookies analíticos e de
+          publicidade (Google Analytics e Meta Pixel). Você pode recusar a qualquer momento.
         </p>
         <div className="flex gap-3 flex-shrink-0">
           <button
             onClick={reject}
             className="font-body font-light text-xs text-brand-400 hover:text-brand-200 transition-colors px-4 py-2 border border-brand-700 hover:border-brand-500"
           >
-            Somente necessários
+            Recusar
           </button>
           <button
             onClick={accept}
