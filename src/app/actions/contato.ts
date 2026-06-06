@@ -1,7 +1,10 @@
 'use server'
 
+import { randomUUID } from 'crypto'
+import { headers, cookies } from 'next/headers'
 import { supabaseAdmin } from '@/lib/supabase-server'
 import { WA_NUMBER } from '@/lib/whatsapp'
+import { sendCapiEvent } from '@/lib/meta-capi'
 
 const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? ''
 const WA_FALLBACK   = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Olá, vim pelo site e gostaria de um orçamento.')}`
@@ -20,6 +23,7 @@ export async function enviarContato(
   const email    = (formData.get('email')    as string | null)?.trim() ?? ''
   const ambiente = (formData.get('ambiente') as string | null)?.trim()
   const mensagem = (formData.get('mensagem') as string | null)?.trim() ?? ''
+  const eventId  = (formData.get('fb_event_id') as string | null)?.trim() || randomUUID()
 
   if (!nome || !telefone || !ambiente) {
     return { status: 'error', message: 'Preencha todos os campos obrigatórios.' }
@@ -58,7 +62,30 @@ export async function enviarContato(
     })
 
     const data = await res.json()
-    if (data.success) return { status: 'ok' }
+    if (data.success) {
+      // Conversão Lead server-side (CAPI) — mesmo event_id do pixel → deduplicação.
+      try {
+        const h = await headers()
+        const c = await cookies()
+        const ip = h.get('x-forwarded-for')?.split(',')[0]?.trim() || h.get('x-real-ip')
+        await sendCapiEvent({
+          eventName: 'Lead',
+          eventId,
+          eventSourceUrl: h.get('referer') || undefined,
+          email: email || null,
+          phone: telefone,
+          name: nome,
+          clientIp: ip,
+          userAgent: h.get('user-agent'),
+          fbp: c.get('_fbp')?.value,
+          fbc: c.get('_fbc')?.value,
+          customData: { content_name: 'Formulário de Orçamento', ambiente },
+        })
+      } catch (err) {
+        console.error('[contato] CAPI Lead falhou:', err)
+      }
+      return { status: 'ok' }
+    }
 
     return { status: 'error', message: 'Erro ao enviar. Tente pelo WhatsApp.' }
   } catch {

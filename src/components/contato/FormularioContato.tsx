@@ -1,6 +1,6 @@
 'use client'
 
-import { useActionState, useEffect } from 'react'
+import { useActionState, useEffect, useRef } from 'react'
 import { enviarContato, type ContatoState } from '@/app/actions/contato'
 import { waUrl } from '@/lib/whatsapp'
 
@@ -18,11 +18,20 @@ const initial: ContatoState = { status: 'idle' }
 
 export function FormularioContato() {
   const [state, action, pending] = useActionState(enviarContato, initial)
+  // event_id compartilhado entre pixel (browser) e CAPI (server) → deduplicação no Meta.
+  const eventIdRef = useRef('')
+  const eventIdInputRef = useRef<HTMLInputElement>(null)
+
+  function onSubmit() {
+    const id = (globalThis.crypto?.randomUUID?.() ?? String(Date.now() + Math.random()))
+    eventIdRef.current = id
+    if (eventIdInputRef.current) eventIdInputRef.current.value = id
+  }
 
   // Conversão: dispara o evento Lead no Meta Pixel quando o orçamento é enviado.
   useEffect(() => {
     if (state.status === 'ok') {
-      ;(window as any).fbq?.('track', 'Lead', { content_name: 'Formulário de Orçamento' })
+      ;(window as any).fbq?.('track', 'Lead', { content_name: 'Formulário de Orçamento' }, { eventID: eventIdRef.current || undefined })
       ;(window as any).gtag?.('event', 'generate_lead')
     }
   }, [state.status])
@@ -61,7 +70,8 @@ export function FormularioContato() {
   const noApiKey = state.status === 'error' && state.message === 'no_api_key'
 
   return (
-    <form action={action} className="space-y-5">
+    <form action={action} onSubmit={onSubmit} className="space-y-5">
+      <input ref={eventIdInputRef} type="hidden" name="fb_event_id" />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
