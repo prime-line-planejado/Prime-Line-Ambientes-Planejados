@@ -3,9 +3,10 @@
 import { useState, useEffect, useRef } from 'react'
 
 const CONSENT_KEY = 'pl_cookie_consent'
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID
-// Pixel ID é público (aparece em toda requisição do site) — hardcode com fallback
-// pro env, pra funcionar em qualquer projeto Vercel que buildar o repo.
+// GA Measurement ID e Pixel ID são públicos (aparecem em toda requisição do site)
+// — hardcode com fallback pro env, pra funcionar em qualquer projeto Vercel que
+// buildar o repo sem depender de variável de ambiente configurada no painel.
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-DGV7F4DP29'
 const PIXEL_ID = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID || '3194399230742680'
 
 function injectGA() {
