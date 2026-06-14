@@ -1,7 +1,7 @@
 export const WA_NUMBER    = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '5531998156666'
 export const PHONE_DISPLAY = '+55 (31) 9 9815-6666'
 
-export function waUrl(origem: 'home' | 'servicos' | 'portfolio' | 'blog' | 'contato' | 'flutuante' | 'bairros', contexto?: string): string {
+export function waUrl(origem: 'home' | 'servicos' | 'portfolio' | 'blog' | 'contato' | 'flutuante' | 'bairros' | 'cidades', contexto?: string): string {
   const mensagens: Record<string, string> = {
     home: 'Olá! Vi o site da Prime Line e gostaria de solicitar um orçamento gratuito de móveis planejados. Podem me contar como funciona?',
     servicos: contexto
@@ -16,6 +16,9 @@ export function waUrl(origem: 'home' | 'servicos' | 'portfolio' | 'blog' | 'cont
     bairros: contexto
       ? `Olá! Vi a página da Prime Line sobre ${contexto} e gostaria de agendar uma visita técnica gratuita. Podem me atender?`
       : 'Olá! Vi o site da Prime Line e gostaria de solicitar uma visita técnica gratuita para orçamento de móveis planejados.',
+    cidades: contexto
+      ? `Olá! Vi que a Prime Line atende ${contexto} e gostaria de agendar uma visita técnica gratuita para um orçamento de móveis planejados. Podem me atender?`
+      : 'Olá! Vi o site da Prime Line e gostaria de solicitar uma visita técnica gratuita para orçamento de móveis planejados na Grande BH.',
   }
 
   return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(mensagens[origem])}`

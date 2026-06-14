@@ -162,9 +162,14 @@ const jsonLd = {
   ],
   areaServed: [
     { '@type': 'City', name: 'Belo Horizonte' },
-    { '@type': 'City', name: 'Contagem' },
     { '@type': 'City', name: 'Nova Lima' },
+    { '@type': 'City', name: 'Contagem' },
     { '@type': 'City', name: 'Betim' },
+    { '@type': 'City', name: 'Lagoa Santa' },
+    { '@type': 'City', name: 'Sabará' },
+    { '@type': 'City', name: 'Santa Luzia' },
+    { '@type': 'City', name: 'Ribeirão das Neves' },
+    { '@type': 'City', name: 'Vespasiano' },
   ],
   knowsAbout: [
     'Marcenaria planejada',

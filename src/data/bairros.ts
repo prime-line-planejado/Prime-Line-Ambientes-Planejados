@@ -51,6 +51,22 @@ export const bairros: Bairro[] = [
   { slug: 'moveis-planejados-bandeirantes',  nome: 'Bandeirantes',   regiao: 'classe-media', destaque: 'bairro residencial com boa qualidade de vida' },
   { slug: 'moveis-planejados-itapoa-bh',     nome: 'Itapoã',         regiao: 'classe-media', destaque: 'bairro próximo à Lagoa da Pampulha em crescimento' },
   { slug: 'moveis-planejados-santa-branca',  nome: 'Santa Branca',   regiao: 'classe-media', destaque: 'bairro residencial com perfil familiar em expansão' },
+
+  // Mais bairros conhecidos — todas as faixas (incl. regiões populares)
+  { slug: 'moveis-planejados-jaragua-bh',     nome: 'Jaraguá',        regiao: 'alto',         destaque: 'bairro arborizado e valorizado próximo à Pampulha' },
+  { slug: 'moveis-planejados-centro-bh',      nome: 'Centro',         regiao: 'medio-alto',   destaque: 'coração comercial e residencial de Belo Horizonte' },
+  { slug: 'moveis-planejados-santa-tereza-bh', nome: 'Santa Tereza',  regiao: 'medio-alto',   destaque: 'bairro boêmio e tradicional da região leste' },
+  { slug: 'moveis-planejados-barro-preto',    nome: 'Barro Preto',    regiao: 'medio-alto',   destaque: 'polo de moda e bairro residencial central' },
+  { slug: 'moveis-planejados-sagrada-familia', nome: 'Sagrada Família', regiao: 'medio-alto', destaque: 'bairro tradicional e valorizado da região leste' },
+  { slug: 'moveis-planejados-cidade-nova-bh', nome: 'Cidade Nova',    regiao: 'medio-alto',   destaque: 'bairro residencial bem estruturado da região nordeste' },
+  { slug: 'moveis-planejados-nova-suica',     nome: 'Nova Suíça',     regiao: 'medio-alto',   destaque: 'bairro residencial tranquilo da região oeste' },
+  { slug: 'moveis-planejados-padre-eustaquio', nome: 'Padre Eustáquio', regiao: 'classe-media', destaque: 'bairro residencial consolidado da região noroeste' },
+  { slug: 'moveis-planejados-santa-amelia',   nome: 'Santa Amélia',   regiao: 'classe-media', destaque: 'bairro familiar da região da Pampulha' },
+  { slug: 'moveis-planejados-caicara',        nome: 'Caiçara',        regiao: 'classe-media', destaque: 'bairro tradicional e populoso da região noroeste' },
+  { slug: 'moveis-planejados-carlos-prates',  nome: 'Carlos Prates',  regiao: 'classe-media', destaque: 'bairro residencial e comercial da região noroeste' },
+  { slug: 'moveis-planejados-planalto-bh',    nome: 'Planalto',       regiao: 'classe-media', destaque: 'bairro residencial em crescimento da região norte' },
+  { slug: 'moveis-planejados-venda-nova',     nome: 'Venda Nova',     regiao: 'classe-media', destaque: 'uma das maiores regiões residenciais de BH' },
+  { slug: 'moveis-planejados-barreiro-bh',    nome: 'Barreiro',       regiao: 'classe-media', destaque: 'a maior região do Barreiro, com forte perfil residencial' },
 ]
 
 export const regiaoLabel: Record<RegiaoTipo, string> = {

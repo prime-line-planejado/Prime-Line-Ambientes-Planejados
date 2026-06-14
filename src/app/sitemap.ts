@@ -3,6 +3,7 @@ import { getTodosArtigos } from '@/lib/blog'
 import { projetos } from '@/data/projetos'
 import { servicosPaginas } from '@/data/servicosPaginas'
 import { bairros } from '@/data/bairros'
+import { cidades } from '@/data/cidades'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://primelineplanejados.com.br'
 
@@ -50,5 +51,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.65,
   }))
 
-  return [...pages, ...servicosMap, ...projetosMap, ...artigosMap, ...bairrosIndexMap, ...bairrosMap]
+  const cidadesIndexMap: MetadataRoute.Sitemap = [
+    { url: `${siteUrl}/cidades`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+  ]
+
+  const cidadesMap: MetadataRoute.Sitemap = cidades.map(c => ({
+    url: `${siteUrl}/cidades/${c.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }))
+
+  return [...pages, ...servicosMap, ...projetosMap, ...artigosMap, ...bairrosIndexMap, ...bairrosMap, ...cidadesIndexMap, ...cidadesMap]
 }
