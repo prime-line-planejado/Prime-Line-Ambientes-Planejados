@@ -57,6 +57,8 @@ const socials = [
 const links = [
   { label: 'Portfólio', href: '/portfolio' },
   { label: 'Serviços',  href: '/servicos'  },
+  { label: 'Bairros atendidos', href: '/bairros' },
+  { label: 'Cidades da Grande BH', href: '/cidades' },
   { label: 'Sobre',     href: '/sobre'     },
   { label: 'Blog',      href: '/blog'      },
   { label: 'Contato',   href: '/contato'   },
