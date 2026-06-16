@@ -15,7 +15,7 @@ export function CalcProjeto() {
   const total = valido ? n * PRECO_M2 : 0
 
   const msg = valido
-    ? `Olá! Quero um projeto de móveis planejados de aproximadamente ${n} m² (estimativa de ${fmt(total)} no site). Podem me explicar como funciona?`
+    ? `Olá! Quero um projeto de móveis planejados para um ambiente de aproximadamente ${n} m² (estimativa de ${fmt(total)} no site). Podem me explicar como funciona?`
     : 'Olá! Quero saber sobre o projeto de móveis planejados (3D + plano de corte + lista de materiais). Como funciona?'
   const wa = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`
 
@@ -27,7 +27,7 @@ export function CalcProjeto() {
       </h3>
 
       <label className="block font-body text-sm text-brand-600 mb-2" htmlFor="m2">
-        Quantos m² de móveis você quer projetar?
+        Qual é a área do ambiente que você quer projetar? (em m²)
       </label>
       <div className="flex items-center gap-2 mb-6">
         <input
@@ -50,8 +50,8 @@ export function CalcProjeto() {
           {valido ? fmt(total) : '—'}
         </p>
         <p className="font-body text-xs text-brand-500 mt-2 leading-relaxed">
-          {fmt(PRECO_M2)}/m² — valor do <strong className="font-semibold text-brand-700">projeto</strong> (3D,
-          plano de corte, lista de materiais, medidas e orientação). Não inclui a fabricação do móvel.
+          {fmt(PRECO_M2)}/m² de <strong className="font-semibold text-brand-700">área do ambiente</strong> — valor do
+          projeto (3D, plano de corte, lista de materiais, medidas e orientação). Não inclui a fabricação do móvel.
         </p>
       </div>
 

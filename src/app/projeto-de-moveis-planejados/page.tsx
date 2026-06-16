@@ -6,6 +6,15 @@ import { CalcProjeto, PRECO_M2 } from '@/components/projeto/CalcProjeto'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://primelineplanejados.com.br'
 const WA_URL = waUrl('projeto')
+const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+
+// Exemplos-âncora — preço calculado pela ÁREA DO AMBIENTE (m²) × PRECO_M2.
+const exemplos = [
+  { amb: 'Cozinha', m2: 9 },
+  { amb: 'Quarto + closet', m2: 12 },
+  { amb: 'Sala de estar', m2: 18 },
+  { amb: 'Apartamento completo', m2: 50 },
+]
 
 export const metadata: Metadata = {
   title: 'Projeto de Móveis Planejados 3D — Compre Só o Projeto | Prime Line',
@@ -49,7 +58,7 @@ const paraQuem = [
 const faq = [
   { pergunta: 'O que exatamente eu recebo no projeto?', resposta: 'Você recebe o projeto 3D realista, o plano de corte completo, a lista completa de materiais, as medidas técnicas detalhadas e a orientação para execução. Tudo o que o seu marceneiro precisa para fabricar os móveis exatamente como projetado.' },
   { pergunta: 'Por que sai até 50% mais barato?', resposta: 'Uma loja de planejados cobra o projeto, o móvel, a comissão do vendedor e a margem da loja em um pacote só. Comprando apenas o projeto profissional com a Prime Line e contratando a execução direto com um marceneiro, você paga o preço real do móvel — sem os intermediários.' },
-  { pergunta: `Quanto custa o projeto?`, resposta: `O projeto custa ${PRECO_M2.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} por metro quadrado de móvel projetado. Use a calculadora nesta página para estimar o valor do seu projeto. O valor final é confirmado após entendermos o escopo.` },
+  { pergunta: `Quanto custa o projeto?`, resposta: `O projeto custa ${brl(PRECO_M2)} por metro quadrado de área do ambiente. Ou seja, multiplique a metragem do cômodo por ${PRECO_M2}: uma cozinha de 9 m², por exemplo, fica em torno de ${brl(9 * PRECO_M2)}. Use a calculadora nesta página para estimar, e o valor final é confirmado após entendermos o escopo.` },
   { pergunta: 'Vocês atendem fora de Belo Horizonte?', resposta: 'Sim. Como vendemos o projeto (e não o móvel físico), atendemos clientes em todo o Brasil. Todo o processo é feito à distância pelo WhatsApp, com base nas medidas e fotos do seu ambiente.' },
   { pergunta: 'Eu preciso ter um marceneiro?', resposta: 'O ideal é ter um marceneiro de confiança para executar. Se não tiver, podemos orientar sobre o que procurar e como avaliar orçamentos de execução. O projeto é feito para que qualquer marceneiro qualificado consiga fabricar.' },
   { pergunta: 'E se eu quiser que a Prime Line faça e instale o móvel?', resposta: 'Em Belo Horizonte e Região Metropolitana, a Prime Line também fabrica e instala com equipe própria. Conheça o serviço completo na nossa página de serviços.' },
@@ -126,7 +135,7 @@ export default function ProjetoPage() {
             e executa com <strong className="text-white">qualquer marceneiro</strong>. Sem loja, sem comissão, sem intermediário.
           </p>
           <p className="font-display font-light text-3xl text-gold-main mb-10">
-            A partir de R${PRECO_M2}/m² de projeto
+            R${PRECO_M2}/m² de área do ambiente
           </p>
           <a href={WA_URL} target="_blank" rel="noopener noreferrer" className="btn-solid inline-flex items-center gap-3">
             <WaIcon /> Pedir meu projeto
@@ -190,6 +199,21 @@ export default function ProjetoPage() {
             <SectionTitle label="Simule agora" title="Quanto custa o seu projeto?" center light />
           </div>
           <CalcProjeto />
+
+          <div className="max-w-md mx-auto mt-10 border-t border-brand-800 pt-8">
+            <p className="label-caps text-brand-500 mb-5 text-center">Exemplos por área do ambiente</p>
+            <ul className="space-y-3">
+              {exemplos.map(({ amb, m2 }) => (
+                <li key={amb} className="flex items-center justify-between font-body text-sm">
+                  <span className="text-brand-300">{amb} <span className="text-brand-500">· ~{m2} m²</span></span>
+                  <span className="text-gold-main font-semibold">{brl(m2 * PRECO_M2)}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="font-body text-[11px] text-brand-500 text-center mt-5">
+              Valores de referência do projeto. O final depende do escopo de cada ambiente.
+            </p>
+          </div>
         </div>
       </section>
 
