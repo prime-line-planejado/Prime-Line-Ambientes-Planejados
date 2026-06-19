@@ -11,6 +11,7 @@ const WA_URL = waUrl('flutuante')
 const navLinks = [
   { label: 'Portfólio',  href: '/portfolio' },
   { label: 'Serviços',   href: '/servicos'  },
+  { label: 'Só o Projeto', href: '/projeto-de-moveis-planejados' },
   { label: 'Sobre',      href: '/sobre'     },
   { label: 'Blog',       href: '/blog'      },
   { label: 'Contato',    href: '/contato'   },

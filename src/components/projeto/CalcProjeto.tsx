@@ -3,8 +3,11 @@
 import { useState } from 'react'
 import { WA_NUMBER } from '@/lib/whatsapp'
 
-// Preço do PROJETO por m² (não do móvel). Centralizado p/ ajuste fácil.
+// Preço do PROJETO por m² de ÁREA DO AMBIENTE. Centralizado p/ ajuste fácil.
 export const PRECO_M2 = 80
+// Valor mínimo de projeto — PLACEHOLDER (confirmar com o dono). Protege cômodos
+// pequenos e densos (ex: cozinha) de saírem abaixo do custo do detalhamento.
+export const PRECO_MIN = 600
 
 const fmt = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
@@ -12,7 +15,9 @@ export function CalcProjeto() {
   const [m2, setM2] = useState('')
   const n = parseFloat(m2.replace(',', '.'))
   const valido = !isNaN(n) && n > 0
-  const total = valido ? n * PRECO_M2 : 0
+  const bruto = valido ? n * PRECO_M2 : 0
+  const total = valido ? Math.max(bruto, PRECO_MIN) : 0
+  const aplicouMin = valido && bruto < PRECO_MIN
 
   const msg = valido
     ? `Olá! Quero um projeto de móveis planejados para um ambiente de aproximadamente ${n} m² (estimativa de ${fmt(total)} no site). Podem me explicar como funciona?`
@@ -53,6 +58,11 @@ export function CalcProjeto() {
           {fmt(PRECO_M2)}/m² de <strong className="font-semibold text-brand-700">área do ambiente</strong> — valor do
           projeto (3D, plano de corte, lista de materiais, medidas e orientação). Não inclui a fabricação do móvel.
         </p>
+        {aplicouMin && (
+          <p className="font-body text-xs text-gold-dark mt-2">
+            Aplicado o valor mínimo de projeto ({fmt(PRECO_MIN)}).
+          </p>
+        )}
       </div>
 
       <a
